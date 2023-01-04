@@ -1,0 +1,27 @@
+.header {
+  color: lightskyblue;
+  margin: auto;
+  width: 300px;
+}
+
+.dropListCard h4 {
+  padding: 2px;
+  margin: auto;
+  font-weight: 600;
+}
+
+.dropListCard {
+  border: 1px solid black;
+}
+
+.dropRare {
+  background-color: rgb(245, 225, 111);
+}
+
+.dropUncommon {
+  background-color: rgb(181, 181, 181);
+}
+
+.dropCommon {
+  background-color: rgb(212, 149, 87);
+}
