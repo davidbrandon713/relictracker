@@ -2,17 +2,13 @@
 
 // Sorts alphabetically
 export const compare = (a, b) => {
-  if ( a.id < b.id ){
+  if ( a.name < b.name ){
           return -1;
       }
-      if ( a.id > b.id ){
+      if ( a.name > b.name ){
           return 1;
       }
       return 0;
-}
-
-export const setRelic = (name) => {
-  
 }
 
 // export const setSearchField = (text) => {

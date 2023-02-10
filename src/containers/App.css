@@ -1,17 +1,26 @@
+@charset "utf-8";
+
 .header {
-  color: lightskyblue;
+  color: lightblue;
   margin: auto;
-  width: 300px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.cardTitle {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.dropListCard {
+  border: 1px solid black;
+  margin-top: 8px;
 }
 
 .dropListCard h4 {
   padding: 2px;
   margin: auto;
   font-weight: 600;
-}
-
-.dropListCard {
-  border: 1px solid black;
 }
 
 .dropRare {

@@ -4,9 +4,9 @@ import Header from '../components/Header';
 import CardList from '../components/CardList';
 //import RelicPage from '../components/RelicPage';
 import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll';
+// import Scroll from '../components/Scroll';
 import ErrorBoundry from '../components/ErrorBoundry';
-import { relicList } from '../components/RelicData';
+import { relicList } from '../RelicData';
 import { compare } from '../actions';
 
 class App extends Component {
@@ -55,15 +55,15 @@ class App extends Component {
     
     // Show cards with regard to searchfield
     return (
-      <div className="tc">
+      <div className="tc" style={{height: window.innerHeight}}>
         <Header />
         <SearchBox searchChange={this.onSearchChange} />
         
-        <Scroll height={window.innerHeight}>
+        {/* <Scroll height={window.innerHeight}> */}
           <ErrorBoundry>
             <CardList relics={filteredRelics} />
           </ErrorBoundry>
-        </Scroll>
+        {/* </Scroll> */}
       </div>
     );
   }
