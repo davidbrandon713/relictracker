@@ -3,23 +3,23 @@
   "name": "Relic Tracker (React)",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "assets/images/favicon.ico",
       "sizes": "128x128 64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo165x192.png",
+      "src": "assets/images/logo165x192.png",
       "type": "image/png",
       "sizes": "165x192"
     },
     {
-      "src": "logo440x512.png",
+      "src": "assets/images/logo440x512.png",
       "type": "image/png",
       "sizes": "440x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#F5F5F5",
+  "background_color": "#0e0e74"
 }
