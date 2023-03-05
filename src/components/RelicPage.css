@@ -39,6 +39,7 @@ button {
   top: 0;
   left: 0;
   margin: -13px -13px 0px -13px;
+  cursor: pointer;
   /* background-color: grey; */
 }
 
