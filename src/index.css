@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to right, rgb(14, 14, 116) 0%, rgb(9, 111, 171) 100%); /* w3c */
+  background: linear-gradient(105deg, rgb(14, 32, 67) 0%, rgb(48, 90, 144) 100%); /* w3c */
 }
 
 code {
