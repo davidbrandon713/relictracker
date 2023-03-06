@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/relictracker/static/css/main.341a7f25.css",
-    "main.js": "/relictracker/static/js/main.76fab8cc.js",
+    "main.css": "/relictracker/static/css/main.63969505.css",
+    "main.js": "/relictracker/static/js/main.8233c60e.js",
     "static/js/787.0e21a580.chunk.js": "/relictracker/static/js/787.0e21a580.chunk.js",
     "service-worker.js": "/relictracker/service-worker.js",
     "index.html": "/relictracker/index.html",
-    "main.341a7f25.css.map": "/relictracker/static/css/main.341a7f25.css.map",
-    "main.76fab8cc.js.map": "/relictracker/static/js/main.76fab8cc.js.map",
+    "main.63969505.css.map": "/relictracker/static/css/main.63969505.css.map",
+    "main.8233c60e.js.map": "/relictracker/static/js/main.8233c60e.js.map",
     "787.0e21a580.chunk.js.map": "/relictracker/static/js/787.0e21a580.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.341a7f25.css",
-    "static/js/main.76fab8cc.js"
+    "static/css/main.63969505.css",
+    "static/js/main.8233c60e.js"
   ]
 }
