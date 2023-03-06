@@ -57,7 +57,7 @@ const RelicPage = ( props ) => {
   }
 
   return (props.trigger) ? (
-    <Draggable bounds="#body" handle=".handle" >
+    <Draggable bounds="html" handle=".handle" >
       <div className='window'>
         <div className='windowInner'>
           <div className='handle' id='dragBar'>
