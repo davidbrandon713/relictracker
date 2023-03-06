@@ -55,7 +55,7 @@ class App extends Component {
     
     // Show cards with regard to searchfield
     return (
-      <div className="tc" style={{height: window.innerHeight}}>
+      <div className="tc">
         <Header />
         <SearchBox searchChange={this.onSearchChange} />
         

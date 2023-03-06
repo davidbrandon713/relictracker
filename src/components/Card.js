@@ -10,7 +10,7 @@ const Card = ({ name, drops, imgSrc, clickEvent }) => {
     <div className='tc grow bg-lightest-blue br3 pa3 ma2 dib bw2 shadow-5' 
       id={name} 
       onClick={clickEvent}
-      style={{width: '250px', height: '354px'}}
+      style={{width: '250px', height: '354px', cursor: 'pointer'}}
     >
       <h1 className='cardTitle'>{name}</h1>
       <img src={imgSrc} alt='relic' />
