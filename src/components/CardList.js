@@ -87,7 +87,7 @@ const CardList = ({ relics }) => {
       />
     </ErrorBoundry> :
   (
-    <div>
+    <>
       {
         relics.map(relic => {
           return (
@@ -111,7 +111,7 @@ const CardList = ({ relics }) => {
           setTrigger={setPopupTrigger}
         />
       </ErrorBoundry>
-    </div>
+    </>
   );
 }
 

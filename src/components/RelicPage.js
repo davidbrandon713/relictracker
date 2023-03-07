@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from 'react';
-import './RelicPage.css'
 import Draggable from 'react-draggable';
+import './RelicPage.css';
 
 const RelicPage = ( props ) => {
   const initialState = [0, 0, 0, 0, 0, 0];
