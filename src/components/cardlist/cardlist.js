@@ -15,7 +15,7 @@ const CardList = ( props ) => {
     if (selectedRelic !== relic) {
       // Retrieve user data for this relic
       const onGetRelicInventory = async (relic) => {
-        await fetch(`http://192.168.1.2:3001/users/${userid}/${relic.id}`, {
+        await fetch(`http://localhost:3001/users/${userid}/${relic.id}`, {
           method: 'GET',
         })
         .then(response => response.json())
@@ -29,7 +29,7 @@ const CardList = ( props ) => {
 
   // Save session drops to user document
   const saveInventory = async (relic, sessionDrops) => {
-    await fetch(`http://192.168.1.2:3001/users/${userid}/update/${relic.id}`, {
+    await fetch(`http://localhost:3001/users/${userid}/update/${relic.id}`, {
       method: 'PATCH',
       headers: { 
         'Content-Type': 'application/json'

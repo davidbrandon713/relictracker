@@ -37,7 +37,7 @@ const App = () => {
 
   // Get all relic data
   const onGetRelics = async () => {
-    await fetch(`http://192.168.1.2:3001/relics/all/${userid}`, {
+    await fetch(`http://localhost:3001/relics/all/${userid}`, {
       method: 'GET',
     })
     .then(response => response.json())
