@@ -1,7 +1,16 @@
 @charset "utf-8";
 
+:root {
+  --main-color: #0d1119;
+  --secondary-color: #161b22;
+  --secondary-saturated: #161f28;
+  --border-light: #406774;
+  --border-dark: #30363d;
+  --font-color: #c7d1d6;
+}
+
 .cardlist-container {
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -12,26 +21,32 @@
 
 .card {
   text-align: center;
-  padding: 16px;
-  width: 230px;
+  padding: 12px;
+  width: 220px;
   height: auto;
   cursor: pointer;
-  border: 1px solid rgb(64, 103, 116);
+  border: 1px solid var(--border-dark);
   border-radius: 4px;
-  background-color: rgb(47, 61, 70);
-  box-shadow: 0px 2px 5px black;
+  background-color: var(--secondary-color);
+  /* background-color: rgb(47, 61, 70); */
+  box-shadow: 0 2px 10px black;
+  transition: 50ms cubic-bezier(.21,.73,.72,.93);
 }
 
 .card:hover {
-  border: 1px solid lightblue;
-  transform: scale(1.05);
-  transition: 100ms cubic-bezier(0.215, 0.610, 0.355, 1);
+  border: 1px solid var(--font-color);
+  background-color: var(--secondary-saturated);
+  transform: scale(1.02);
 }
 
 .cardTitle {
   width: 100%;
   margin: 0 0 8px;
-  color: lightblue;
+  color: var(--border-light);
+}
+
+.card:hover .cardTitle {
+  color: var(--font-color);
 }
 
 .dropListCard {
@@ -52,7 +67,6 @@
 
 .card:hover .dropRare {
   background-color: rgb(245, 225, 111);
-  transition: 100ms ease all;
 }
 
 .card .dropUncommon {
@@ -61,7 +75,6 @@
 
 .card:hover .dropUncommon {
   background-color: rgb(181, 181, 181);
-  transition: 100ms ease all;
 }
 
 .card .dropCommon {
@@ -70,5 +83,42 @@
 
 .card:hover .dropCommon {
   background-color: rgb(212, 149, 87);
-  transition: 100ms ease all;
+}
+
+@media all and (max-width: 880px) {
+  .card {
+    width: 120px;
+    padding: 8px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+  }
+
+  .card img {
+    width: 40%;
+  }
+
+  .dropListCard {
+    font-size: 8px;
+  }
+}
+
+@media all and (max-width: 440px) {
+  .card {
+    width: 80px;
+    padding: 4px;
+  }
+
+  .cardTitle {
+    font-size: 12px;
+  }
+
+  .card img {
+    width: 80%;
+  }
+
+  .dropListCard {
+    display: none;
+  }
 }

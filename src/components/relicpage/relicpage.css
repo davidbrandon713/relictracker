@@ -1,36 +1,34 @@
 @charset "utf-8";
 
 :root {
-  --font-color: lightblue;
-  --border-color: rgb(50, 75, 105);
+  --main-color: #0d1119;
+  --secondary-color: #161b22;
+  --secondary-saturated: #161f28;
+  --border-light: #406774;
+  --border-dark: #30363d;
+  --font-color: #c7d1d6;
 }
 
 .window {
   position: fixed;
+  display: flex;
   top: 0;
   right: 0;
   width: 420px;
   height: auto;
   background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid lightblue;
+  border: 1px solid var(--border-light);
   border-radius: 4px;
-  box-shadow: 2px 4px 10px black;
+  box-shadow: 0 2px 10px black;
   box-sizing: border-box;
 }
 
-.dragBar {
-  display: flex;
-  flex-direction: row;
-  width: 100% + 16px;
-  height: 72px;
-  top: 0;
-  left: 0;
-  margin: -16px -16px 0 -16px;
-  padding: 16px;
-  cursor: move;
+.window:hover {
+  border: 1px solid var(--font-color);
+}
+
+.window button:active {
+  border: 1px solid var(--font-color);
 }
 
 .windowInner {
@@ -42,13 +40,21 @@
   height: 100%;
   padding: 16px;
   color: var(--font-color);
-  background-image: linear-gradient(105deg, rgb(19, 26, 42), rgb(26, 51, 71));
+  background-color: var(--secondary-saturated);
+  /* background-image: linear-gradient(105deg, rgb(19, 26, 42), rgb(26, 51, 71)); */
+}
+
+.dragBar {
+  display: flex;
+  width: 100% + 16px;
+  height: 72px;
+  margin: -16px -16px 0 -16px;
+  cursor: move;
 }
 
 .windowInner .relicTitle {
-  position: relative;
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
   text-align: center;
 }
 
@@ -83,11 +89,17 @@
   margin: 0;
   display: block;
   text-align: center;
+  justify-items: center;
   border: 1px solid black;
+  border-bottom: none;
   color: black;
   width: 100%;
-  height: 52px;
+  height: auto;
   font-weight: 600;
+}
+
+.topContainer div:last-child {
+  border-bottom: 1px solid black;
 }
 
 .topContainer p {
@@ -98,12 +110,12 @@
 
 .topContainer button {
   position: relative;
+  top: 4px;
   width: 42px;
   height: 42px;
-  top: 5px;
   font-size: 18px;
   font-weight: 600;
-  padding-bottom: 4px;
+  transition: transform 50ms cubic-bezier(.21,.73,.72,.93);
 }
 
 .topContainer .btnMinus {
@@ -166,6 +178,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: none;
+  border-collapse: collapse;
 }
 
 .botContainer div {
@@ -174,20 +187,24 @@
 
 .botContainer h5 {
   width: 100%;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-dark);
   margin: auto;
-  padding: 6px 8px;
+}
+
+.botContainer h5:last-child {
+  border: none;
 }
 
 .dataWindow {
-  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  border: 1px solid var(--border-dark);
 }
 
 .dataWindow h5 {
   text-align: right;
+  padding: 6px 8px;
 }
 
 
@@ -200,12 +217,113 @@
 }
 
 .calcWindow div {
-  border: 1px solid var(--border-color);
+  width: 33%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  border: 1px solid var(--border-dark);
+  border-left: none;
 }
 
 .calcWindow h5 {
-  text-align: left;
+  text-align: center;
+  padding: 6px 0px;
+}
+
+
+@media all and (width < 440px) {
+  .window {
+    width: 240px;
+  }
+
+  .windowInner {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .windowInner .closeBtn {
+    position: absolute;
+    width: auto;
+    height: 20px;
+    font-size: 12px;
+    top: 6px;
+    right: 6px;
+  }
+
+  .dragBar {
+    height: 40px;
+  }
+
+  .windowInner .relicTitle {
+    padding-top: 4px;
+    font-size: 20px;
+  }
+
+  .topContainer div {
+    height: 24px;
+    border-collapse: collapse;
+  }
+
+  .topContainer p {
+    font-size: 12px;
+    margin: auto;
+  }
+
+  .topContainer button {
+    position: relative;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    font-weight: 400;
+    transition: transform 50ms cubic-bezier(.21,.73,.72,.93);
+  }
+
+  .topContainer .btnPlus {
+    right: 2px;
+  }
+
+  .topContainer .btnMinus {
+    left: 2px;
+  }
+
+  .midContainer {
+    margin: 6px auto;
+    font-size: 10px;
+  }
+
+  .midContainer div button {
+    margin: auto;
+    width: auto;
+    height: 18px;
+    font-size: 10px;
+  }
+
+  .botContainer {
+    font-size: 10px;
+  }
+
+  .botContainer div div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .botContainer h5 {
+    width: 100%;
+    padding: 4px;
+  }
+
+  .calcWindow div {
+    width: 33%;
+  }
+
+  .calcWindow div h5 {
+    text-align: center;
+  }
+
+  .calcWindow div:last-child h5 {
+    padding: 4px 0;
+  }
+  
 }

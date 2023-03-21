@@ -7,10 +7,9 @@ import '../card/card.css'
 
 const CardList = ( props ) => {
   const [selectedRelic, setSelectedRelic] = useState('None')
-  const [userid, ] = useState('David')
   const [inventory, setInventory] = useState( {id: 'mesoN5', data: [0, 0, 0, 0, 0, 0] })
   const [popupTrigger, setPopupTrigger] = useState(false)
-  const { relics } = props
+  const { userid, relics } = props
 
   const setRelic = async ( relic ) => {
     if (selectedRelic !== relic) {
@@ -22,7 +21,6 @@ const CardList = ( props ) => {
         .then(response => response.json())
         .then(data => setInventory(data))
         .then(setSelectedRelic(relic))
-        .then(console.log(`get ${userid} ${relic.name}`))
       }
       await onGetRelicInventory(relic)
     }
@@ -71,7 +69,7 @@ const CardList = ( props ) => {
             }
           </div>
         ) :
-        (<h3 style={{color: 'lightblue'}}>No relics match search criteria.</h3>)}
+        (<h3 style={{color: 'rgb(199, 209, 214)'}}>No relics match search criteria.</h3>)}
       
       </ErrorBoundry>
       <ErrorBoundry>

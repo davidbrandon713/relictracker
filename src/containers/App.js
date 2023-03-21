@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/simple/header';
 import CardList from '../components/cardlist/cardlist';
 import ErrorBoundry from '../components/simple/error-boundry';
-// import Scroll from '../components/simple/scroll';
+import Scroll from '../components/simple/scroll';
 
 
 import './App.css';
@@ -10,6 +10,20 @@ import './App.css';
 const App = () => {
   const [searchfield, setSearchfield] = useState('')
   const [relics, setRelics] = useState([])
+  const [userid, ] = useState('David')
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+
+  useEffect(() => {
+    window.onresize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+  })
 
   useEffect(() => {
     onGetRelics(setRelics)
@@ -19,14 +33,14 @@ const App = () => {
     setSearchfield(event.target.value)
   }
 
-  // Refresh relic data
+  // Get all relic data
   const onGetRelics = async () => {
-    await fetch('http://localhost:3001/relics', {
+    await fetch(`http://localhost:3001/relics/all/${userid}`, {
       method: 'GET',
     })
     .then(response => response.json())
     .then(data => setRelics(data))
-    .then(console.log('get all relics'))
+    .then(console.log('Initialized'))
   }
 
   // Filters relic list by searchfield
@@ -45,11 +59,11 @@ const App = () => {
   return (
     <div className="app-container">
       <Header searchChange={onSearchChange} />
-      {/* <Scroll height={window.innerHeight}> */}
-      <ErrorBoundry>
-        <CardList relics={filteredRelics} />
-      </ErrorBoundry>
-      {/* </Scroll> */}
+      <Scroll height={windowSize.height}>
+        <ErrorBoundry>
+          <CardList userid={userid} relics={filteredRelics} />
+        </ErrorBoundry>
+      </Scroll>
     </div>
   );
   

@@ -6,11 +6,16 @@ import './relicpage.css'
 const RelicPage = ( props ) => {
   const initialState = [0, 0, 0, 0, 0, 0]
   const [sessionDrops, setSessionDrops] = useState(initialState)
+  const [editMode, setEditMode] = useState(false)
   const { relic, inventory, saveInventory, trigger, setTrigger } = props
 
   useEffect(() => {
     newSession()
   }, [relic])
+
+  useEffect(() => {
+    console.log('Edit mode:', editMode)
+  }, [editMode])
 
   const calcPercent = (drop) => {
     const totalDropCount = inventory.data.reduce((sum, num) => sum += num) + 
@@ -25,7 +30,7 @@ const RelicPage = ( props ) => {
   }
 
   const rmvDrop = (i) => {
-    if (sessionDrops[i] > 0) {
+    if (editMode || sessionDrops[i] > 0) {
       const updatedDrops = [...sessionDrops]
       updatedDrops[i] -= 1
       setSessionDrops(updatedDrops)
@@ -33,21 +38,28 @@ const RelicPage = ( props ) => {
   }
   
   const saveSession = () => {
-    if (sessionDrops.reduce((sum, num) => sum += num) > 0) {
+    if (!sessionDrops.every(item => item === 0)) {
       saveInventory(relic, sessionDrops)
-      setSessionDrops(initialState)
       console.log(`Saved ${relic.name} data`)
+      newSession()
     }
   }
 
   const saveAndClose = () => {
     saveSession()
+    setEditMode(false)
     setTrigger(false)
   }
 
   const newSession = () => {
-    setSessionDrops(initialState)
-    console.log('new session')
+    if (!sessionDrops.every(item => item === 0)) {
+      setSessionDrops(initialState)
+      console.log('New session', relic.name)
+    }
+  }
+
+  const toggleEditMode = () => {
+    setEditMode(prevState => !prevState)
   }
 
   return (trigger) && (
@@ -62,45 +74,51 @@ const RelicPage = ( props ) => {
           <div className='topContainer'>
             <div className='dropRare'>
               <button className='btnMinus' onClick={() => rmvDrop(0)}>-</button>
-                <p>{relic.drops[0]}</p>
+              <p>{relic.drops[0]}</p>
               <button className='btnPlus' onClick={() => addDrop(0)}>+</button>
             </div>
             
             <div className='dropUncommon'>
               <button className='btnMinus' onClick={() => rmvDrop(1)}>-</button>
-                <p>{relic.drops[1]}</p>
+              <p>{relic.drops[1]}</p>
               <button className='btnPlus' onClick={() => addDrop(1)}>+</button>
             </div>
 
             <div className='dropUncommon'>
               <button className='btnMinus' onClick={() => rmvDrop(2)}>-</button>
-                <p>{relic.drops[2]}</p>
+              <p>{relic.drops[2]}</p>
               <button className='btnPlus' onClick={() => addDrop(2)}>+</button>
             </div>
 
             <div className='dropCommon'>
               <button className='btnMinus' onClick={() => rmvDrop(3)}>-</button>
-                <p>{relic.drops[3]}</p>
+              <p>{relic.drops[3]}</p>
               <button className='btnPlus' onClick={() => addDrop(3)}>+</button>
             </div>
 
             <div className='dropCommon'>
               <button className='btnMinus' onClick={() => rmvDrop(4)}>-</button>
-                <p>{relic.drops[4]}</p>
+              <p>{relic.drops[4]}</p>
               <button className='btnPlus' onClick={() => addDrop(4)}>+</button>
             </div>
 
             <div className='dropCommon'>
               <button className='btnMinus' onClick={() => rmvDrop(5)}>-</button>
-                <p>{relic.drops[5]}</p>
+              <p>{relic.drops[5]}</p>
               <button className='btnPlus' onClick={() => addDrop(5)}>+</button>
             </div>
           </div>
 
           <div className='midContainer'>
             <div>
-              <button className='saveBtn' onClick={saveSession}>Save</button>
-              <button className='newBtn' onClick={newSession}>New</button>
+              <button onClick={saveSession}>Save</button>
+              <button 
+              onClick={toggleEditMode}
+              style={{border: editMode && '1px solid red', color: editMode && 'red' }}
+              >
+                Edit
+              </button>
+              <button onClick={newSession}>Revert</button>
             </div>
             <div>
               <h5>Session</h5>
