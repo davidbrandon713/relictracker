@@ -28,7 +28,7 @@ const App = () => {
   })
 
   useEffect(() => {
-    onGetRelics(setRelics)
+    onGetRelics()
   }, [])
 
   const onSearchChange = (event) => {
@@ -37,7 +37,7 @@ const App = () => {
 
   // Get all relic data
   const onGetRelics = async () => {
-    await fetch(`http://localhost:3001/relics/all/${userid}`, {
+    await fetch(`http://192.168.1.2:3001/relics/all/${userid}`, {
       method: 'GET',
     })
     .then(response => response.json())
@@ -60,10 +60,10 @@ const App = () => {
   // Show cards with regard to searchfield
   return (
     <div className="app-container">
-      <Header searchChange={onSearchChange} />
+      <Header onSearchChange={onSearchChange} />
       <Scroll height={windowSize.height} tablet={tablet}>
         <ErrorBoundry>
-          <CardList userid={userid} relics={filteredRelics} />
+          <CardList userid={userid} relics={filteredRelics}/>
         </ErrorBoundry>
       </Scroll>
     </div>
