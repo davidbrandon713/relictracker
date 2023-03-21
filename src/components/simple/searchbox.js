@@ -1,11 +1,13 @@
-import React from 'react';
+import React from 'react'
+
+import './simple.css'
 
 const SearchBox = ({ searchChange }) => {
   return (
-    <div className='ma2'>
+    <div className='searchbox-container'>
       <input
+        className='searchbox'
         aria-label='Search Relics'
-        className='pa2 ba b--blue bg-lightest-blue'
         type='search'
         placeholder='Search relics'
         onChange={searchChange}

@@ -1,36 +1,12 @@
 @charset "utf-8";
 
-.header {
-  color: lightblue;
-  margin: auto;
-  margin-top: 0;
-  padding: 0;
+.app-container {
+  text-align: center;
 }
 
-.cardTitle {
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-.dropListCard {
-  border: 1px solid black;
-  margin-top: 8px;
-}
-
-.dropListCard h4 {
-  padding: 2px;
-  margin: auto;
-  font-weight: 600;
-}
-
-.dropRare {
-  background-color: rgb(245, 225, 111);
-}
-
-.dropUncommon {
-  background-color: rgb(181, 181, 181);
-}
-
-.dropCommon {
-  background-color: rgb(212, 149, 87);
+button {
+  cursor: pointer;
+  background-color: lightgrey;
+  border: 1px solid lightsteelblue;
+  border-radius: 4px;
 }
