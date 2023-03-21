@@ -15,6 +15,8 @@ const App = () => {
     width: window.innerWidth,
     height: window.innerHeight,
   })
+  // const mobile = windowSize.width < 768
+  const tablet = windowSize.width < 1024
 
   useEffect(() => {
     window.onresize = () => {
@@ -59,7 +61,7 @@ const App = () => {
   return (
     <div className="app-container">
       <Header searchChange={onSearchChange} />
-      <Scroll height={windowSize.height}>
+      <Scroll height={windowSize.height} tablet={tablet}>
         <ErrorBoundry>
           <CardList userid={userid} relics={filteredRelics} />
         </ErrorBoundry>

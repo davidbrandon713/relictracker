@@ -10,7 +10,6 @@
 }
 
 .cardlist-container {
-  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -85,7 +84,7 @@
   background-color: rgb(212, 149, 87);
 }
 
-@media all and (max-width: 880px) {
+@media all and (max-width: 1024px) {
   .card {
     width: 120px;
     padding: 8px;
@@ -104,7 +103,7 @@
   }
 }
 
-@media all and (max-width: 440px) {
+@media all and (max-width: 768px) {
   .card {
     width: 80px;
     padding: 4px;

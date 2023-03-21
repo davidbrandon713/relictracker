@@ -60,3 +60,13 @@
   color: var(--font-color);
   text-align: center;
 }
+
+@media all and (width < 1024px) {
+  .header {
+    font-size: 36px;
+    margin: 8px 0 0;
+  }
+  .searchbox-container {
+    margin: 8px 0 4px;
+  }
+}

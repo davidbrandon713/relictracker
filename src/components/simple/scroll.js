@@ -5,7 +5,7 @@ import './simple.css'
 const Scroll = (props) => {
   return (
       <div className='scroll-container' style={{
-        height: props.height - 150,
+        height: props.tablet ? props.height - 94 : props.height - 130
         }}>
           {props.children}
       </div>
