@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './card.css'
+
 const Card = ({ name, drops, imgSrc, clickEvent }) => {
   if (name.split(' ')[0] === 'Lith') { imgSrc = `${process.env.PUBLIC_URL}/assets/images/relicLith100x123.png` }
   if (name.split(' ')[0] === 'Meso') { imgSrc = `${process.env.PUBLIC_URL}/assets/images/relicMeso100x123.png` }
@@ -7,12 +9,11 @@ const Card = ({ name, drops, imgSrc, clickEvent }) => {
   if (name.split(' ')[0] === 'Axi') { imgSrc = `${process.env.PUBLIC_URL}/assets/images/relicAxi100x123.png` }
 
   return (
-    <div className='tc grow bg-lightest-blue br3 pa3 ma2 dib bw2 shadow-5' 
+    <div className='card' 
       id={name} 
       onClick={clickEvent}
-      style={{width: '250px', height: '354px', cursor: 'pointer'}}
     >
-      <h1 className='cardTitle'>{name}</h1>
+      <h1 className='cardTitle'>{name} Relic</h1>
       <img src={imgSrc} alt='relic' />
       <div className='dropListCard'>
         <h4 className='dropRare'>{drops[0]}</h4>
@@ -23,7 +24,7 @@ const Card = ({ name, drops, imgSrc, clickEvent }) => {
         <h4 className='dropCommon'>{drops[5]}</h4>
       </div>
     </div>
-  );
+  )
 }
 
 export default Card;

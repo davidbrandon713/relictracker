@@ -14,7 +14,7 @@ class ErrorBoundry extends Component {
 
 	render() {
 		if (this.state.hasError) {
-			return <h1 className='tc f1'>Oops, that's not good</h1>
+			return <h1 className='error-text'>Something went wrong!</h1>
 		}
 		return this.props.children;
 	}
