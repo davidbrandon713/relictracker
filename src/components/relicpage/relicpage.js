@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
+import RelicPageItem from '../relicpage-drop/relicpage-drop'
 
 import './relicpage.css'
 
@@ -54,7 +55,7 @@ const RelicPage = ( props ) => {
   const newSession = () => {
     if (!sessionDrops.every(item => item === 0)) {
       setSessionDrops(initialState)
-      console.log('New session', relic.name)
+      console.log(`Cleared session for ${relic.name} => [${sessionDrops}]`)
     }
   }
 
@@ -72,53 +73,66 @@ const RelicPage = ( props ) => {
           <button className='closeBtn' onClick={saveAndClose}>Close</button>
 
           <div className='topContainer'>
-            <div className='dropRare'>
-              <button className='btnMinus' onClick={() => rmvDrop(0)}>-</button>
-              <p>{relic.drops[0]}</p>
-              <button className='btnPlus' onClick={() => addDrop(0)}>+</button>
-            </div>
-            
-            <div className='dropUncommon'>
-              <button className='btnMinus' onClick={() => rmvDrop(1)}>-</button>
-              <p>{relic.drops[1]}</p>
-              <button className='btnPlus' onClick={() => addDrop(1)}>+</button>
-            </div>
-
-            <div className='dropUncommon'>
-              <button className='btnMinus' onClick={() => rmvDrop(2)}>-</button>
-              <p>{relic.drops[2]}</p>
-              <button className='btnPlus' onClick={() => addDrop(2)}>+</button>
-            </div>
-
-            <div className='dropCommon'>
-              <button className='btnMinus' onClick={() => rmvDrop(3)}>-</button>
-              <p>{relic.drops[3]}</p>
-              <button className='btnPlus' onClick={() => addDrop(3)}>+</button>
-            </div>
-
-            <div className='dropCommon'>
-              <button className='btnMinus' onClick={() => rmvDrop(4)}>-</button>
-              <p>{relic.drops[4]}</p>
-              <button className='btnPlus' onClick={() => addDrop(4)}>+</button>
-            </div>
-
-            <div className='dropCommon'>
-              <button className='btnMinus' onClick={() => rmvDrop(5)}>-</button>
-              <p>{relic.drops[5]}</p>
-              <button className='btnPlus' onClick={() => addDrop(5)}>+</button>
-            </div>
+            <RelicPageItem 
+              relic={relic}
+              className='dropRare' 
+              rmvDrop={rmvDrop} 
+              addDrop={addDrop} 
+              i={0} 
+            />
+            <RelicPageItem 
+              relic={relic}
+              className='dropUncommon' 
+              rmvDrop={rmvDrop} 
+              addDrop={addDrop} i={1} 
+            />
+            <RelicPageItem 
+              relic={relic}
+              className='dropUncommon' 
+              rmvDrop={rmvDrop} 
+              addDrop={addDrop} i={2} 
+            />
+            <RelicPageItem 
+              relic={relic}
+              className='dropCommon' 
+              rmvDrop={rmvDrop} 
+              addDrop={addDrop} i={3} 
+            />
+            <RelicPageItem 
+              relic={relic}
+              className='dropCommon' 
+              rmvDrop={rmvDrop} 
+              addDrop={addDrop} i={4} 
+            />
+            <RelicPageItem 
+              relic={relic}
+              className='dropCommon' 
+              rmvDrop={rmvDrop} 
+              addDrop={addDrop} i={5} 
+            />
           </div>
 
           <div className='midContainer'>
             <div>
-              <button onClick={saveSession}>Save</button>
               <button 
-              onClick={toggleEditMode}
-              style={{border: editMode && '1px solid red', color: editMode && 'red' }}
+                onClick={saveSession}
+              >
+                  Save
+              </button>
+              <button 
+                onClick={toggleEditMode} 
+                style={{
+                  border: editMode && '1px solid red', 
+                  color: editMode && 'red' 
+                }}
               >
                 Edit
               </button>
-              <button onClick={newSession}>Revert</button>
+              <button 
+                onClick={newSession}
+              >
+                Revert
+              </button>
             </div>
             <div>
               <h5>Session</h5>
@@ -129,21 +143,40 @@ const RelicPage = ( props ) => {
 
           <div className='botContainer'>
             <div className='dataWindow'>
-              { relic.drops && relic.drops.map((drop, index) => <h5 key={`${drop}-${index}-drop`}>{drop}</h5> )}
+              { 
+              relic.drops && relic.drops.map((drop, index) => 
+              <h5 key={`${drop}-${index}-drop`}>
+                {drop}
+              </h5> 
+              )}
             </div>
             <div className='calcWindow'>
               <div>
-                { sessionDrops.map((data, index) => <h5 key={`${inventory.id}-${index}-session`}>{data}</h5> )}
+                { 
+                sessionDrops.map((data, index) => 
+                <h5 key={`${inventory.id}-${index}-session`}>
+                  {data}
+                </h5> 
+                )}
               </div>
               <div>
-                { inventory.data && inventory.data.map((item, index) => <h5 key={`${inventory.id}-${index}-total`}>{item + sessionDrops[index]}</h5> )}
+                { 
+                inventory.data && inventory.data.map((item, index) => 
+                <h5 key={`${inventory.id}-${index}-total`}>
+                  {item + sessionDrops[index]}
+                </h5> 
+                )}
               </div>
               <div>
-                { inventory.data && inventory.data.map((item, index) => <h5 key={`${inventory.id}-${index}-percent`}>{calcPercent(item + sessionDrops[index])}%</h5> )}
+                { 
+                inventory.data && inventory.data.map((item, index) => 
+                <h5 key={`${inventory.id}-${index}-percent`}>
+                  {calcPercent(item + sessionDrops[index])}%
+                </h5> 
+                )}
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </Draggable>

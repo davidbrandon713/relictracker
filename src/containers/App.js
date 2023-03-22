@@ -8,6 +8,7 @@ import Scroll from '../components/simple/scroll';
 import './App.css';
 
 const App = () => {
+  const serverIP = '192.168.1.2'
   const [searchfield, setSearchfield] = useState('')
   const [relics, setRelics] = useState([])
   const [userid, ] = useState('David')
@@ -37,7 +38,7 @@ const App = () => {
 
   // Get all relic data
   const onGetRelics = async () => {
-    await fetch(`http://localhost:3001/relics/all/${userid}`, {
+    await fetch(`http://${serverIP}:3001/relics/all/${userid}`, {
       method: 'GET',
     })
     .then(response => response.json())
@@ -63,7 +64,7 @@ const App = () => {
       <Header onSearchChange={onSearchChange} />
       <Scroll height={windowSize.height} tablet={tablet}>
         <ErrorBoundry>
-          <CardList userid={userid} relics={filteredRelics}/>
+          <CardList userid={userid} relics={filteredRelics} serverIP={serverIP} />
         </ErrorBoundry>
       </Scroll>
     </div>

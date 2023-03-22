@@ -9,13 +9,13 @@ const CardList = ( props ) => {
   const [selectedRelic, setSelectedRelic] = useState('None')
   const [inventory, setInventory] = useState( {id: 'mesoN5', data: [0, 0, 0, 0, 0, 0] })
   const [popupTrigger, setPopupTrigger] = useState(false)
-  const { userid, relics } = props
+  const { userid, relics, serverIP } = props
 
   const setRelic = async ( relic ) => {
     if (selectedRelic !== relic) {
       // Retrieve user data for this relic
       const onGetRelicInventory = async (relic) => {
-        await fetch(`http://localhost:3001/users/${userid}/${relic.id}`, {
+        await fetch(`http://${serverIP}:3001/users/${userid}/${relic.id}`, {
           method: 'GET',
         })
         .then(response => response.json())
@@ -29,7 +29,7 @@ const CardList = ( props ) => {
 
   // Save session drops to user document
   const saveInventory = async (relic, sessionDrops) => {
-    await fetch(`http://localhost:3001/users/${userid}/update/${relic.id}`, {
+    await fetch(`http://${serverIP}:3001/users/${userid}/update/${relic.id}`, {
       method: 'PATCH',
       headers: { 
         'Content-Type': 'application/json'
