@@ -14,7 +14,7 @@
 }
 
 .header {
-  color: rgb(199, 209, 214);
+  color: var(--font-color);
   font-size: 48px;
   margin: 24px 0 0;
 }
@@ -36,7 +36,7 @@
   flex-direction: row;
   justify-content: center;
   width: auto;
-  margin: 12px 0 4px;
+  margin: 4px 0 12px;
 }
 
 .textbox {
@@ -80,6 +80,6 @@
     margin: 8px 0 0;
   }
   .textbox-container {
-    margin: 8px 0 4px;
+    margin: 4px 0 8px;
   }
 }
