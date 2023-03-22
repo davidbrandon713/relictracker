@@ -8,7 +8,7 @@ import Scroll from '../components/simple/scroll';
 import './App.css';
 
 const App = () => {
-  const serverIP = '192.168.1.2'
+  const serverIP = 'localhost'
   const [searchfield, setSearchfield] = useState('')
   const [relics, setRelics] = useState([])
   const [userid, ] = useState('David')
