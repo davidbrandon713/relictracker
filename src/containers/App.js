@@ -47,14 +47,14 @@ const App = () => {
 
   // Filters relic list by searchfield
   const filteredRelics = relics.filter(relic => {
-    const nameMatch = relic.name.toLowerCase().includes(searchfield.toLowerCase());
-    const itemMatch0 = relic.drops[0].toLowerCase().includes(searchfield.toLowerCase());
-    const itemMatch1 = relic.drops[1].toLowerCase().includes(searchfield.toLowerCase());
-    const itemMatch2 = relic.drops[2].toLowerCase().includes(searchfield.toLowerCase());
-    const itemMatch3 = relic.drops[3].toLowerCase().includes(searchfield.toLowerCase());
-    const itemMatch4 = relic.drops[4].toLowerCase().includes(searchfield.toLowerCase());
-    const itemMatch5 = relic.drops[5].toLowerCase().includes(searchfield.toLowerCase());
-    return nameMatch || itemMatch0 || itemMatch1 || itemMatch2 || itemMatch3 || itemMatch4 || itemMatch5;
+    let nameMatch = relic.name.toLowerCase().includes(searchfield.toLowerCase());
+    let itemMatch = false
+    for (let i = 0; i < 6; i++) {
+      if (relic.drops[i].toLowerCase().includes(searchfield.toLowerCase())) {
+        itemMatch = true
+      }
+    }
+    return nameMatch || itemMatch;
   });
   
   // Show cards with regard to searchfield

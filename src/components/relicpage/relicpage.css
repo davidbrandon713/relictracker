@@ -231,7 +231,7 @@
 }
 
 
-@media all and (width < 768px) {
+@media all and (width < 1024px) {
   .window {
     width: 240px;
   }
