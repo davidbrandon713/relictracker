@@ -13,8 +13,7 @@
 
 html {
   min-height: 100%;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-dark) var(--secondary-color);
+  background-color: var(--main-color);
 }
 
 button {
@@ -30,7 +29,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--main-color);
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-color) var(--main-color);
   /* background-image: linear-gradient(105deg, rgb(12, 17, 30), rgb(37, 44, 59)); */
 }
 
@@ -46,6 +46,7 @@ code {
 body::-webkit-scrollbar {
   position: relative;
   width: 4px;               /* width of the entire scrollbar */
+  overflow: overlay;
 }
 
 body::-webkit-scrollbar-track {

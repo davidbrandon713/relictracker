@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../components/simple/header'
 import CardList from '../../components/cardlist/cardlist'
 import ErrorBoundry from '../../components/simple/error-boundry'
+import Scroll from '../../components/simple/scroll'
 
 import '../../index.css'
 
@@ -10,6 +11,17 @@ const App = () => {
 	const userid = 'David'
 	const [searchfield, setSearchfield] = useState('')
 	const [relics, setRelics] = useState([])
+  const [windowSize, setWindowSize] = useState({
+    height: window.innerHeight,
+  })
+
+  useEffect(() => {
+    window.onresize = () => {
+      setWindowSize({
+        height: window.innerHeight,
+      })
+    }
+  }, [])
 
 	useEffect(() => {
 		onGetRelics()
@@ -74,13 +86,15 @@ const App = () => {
 				onSearchChange={onSearchChange}
 				onCreateRelic={onCreateRelic}
 			/>
-			<ErrorBoundry>
-				<CardList
-					userid={userid}
-					relics={filteredRelics}
-					serverIP={serverIP}
-				/>
-			</ErrorBoundry>
+      <Scroll height={windowSize.height}>
+        <ErrorBoundry>
+          <CardList
+            userid={userid}
+            relics={filteredRelics}
+            serverIP={serverIP}
+          />
+        </ErrorBoundry>
+      </Scroll>
 		</div>
 	)
 }

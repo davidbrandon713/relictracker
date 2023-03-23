@@ -60,6 +60,13 @@
   outline: none;
 }
 
+.scroll-container {
+  margin: auto;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-color) var(--main-color);
+}
+
 .error {
   color: var(--font-color);
 }
@@ -91,16 +98,8 @@
   transition: all 50ms cubic-bezier(.21,.73,.72,.93);
 }
 
-@media all and (width < 1024px) {
-  .header-container {
-    box-shadow: 0 2px 8px black;
-  }
-
+@media all and (width < 768px) {
   .create-container {
     right: 12px;
-  }
-
-  .header {
-    font-size: 36px;
   }
 }

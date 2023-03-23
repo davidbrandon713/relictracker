@@ -46,7 +46,7 @@ const Form = ({ onCreateRelic, setPopupTrigger }) => {
 	return (
 		<div className="form-container">
 			<div className="title-container">
-				<h2 className="form-title">React Hook Form</h2>
+				<h2 className="form-title">Add a new relic</h2>
 				<button
 					className="btnClose"
 					onClick={() => setPopupTrigger(false)}
@@ -68,7 +68,7 @@ const Form = ({ onCreateRelic, setPopupTrigger }) => {
 					register={register}
 				/>
 				<FormElement
-					title="id"
+					title="ID"
 					name="id"
 					type="text"
 					error={errors.id}
@@ -86,7 +86,7 @@ const Form = ({ onCreateRelic, setPopupTrigger }) => {
 					register={register}
 				/>
 				<FormElement
-					title="Uncommon drop 1"
+					title="Uncommon drop"
 					name="drop2"
 					type="text"
 					error={errors.drop2}
@@ -95,7 +95,7 @@ const Form = ({ onCreateRelic, setPopupTrigger }) => {
 					register={register}
 				/>
 				<FormElement
-					title="Uncommon drop 2"
+					title="Uncommon drop"
 					name="drop3"
 					type="text"
 					error={errors.drop3}
@@ -104,7 +104,7 @@ const Form = ({ onCreateRelic, setPopupTrigger }) => {
 					register={register}
 				/>
 				<FormElement
-					title="Common drop 1"
+					title="Common drop"
 					name="drop4"
 					type="text"
 					error={errors.drop4}
@@ -113,7 +113,7 @@ const Form = ({ onCreateRelic, setPopupTrigger }) => {
 					register={register}
 				/>
 				<FormElement
-					title="Common drop 2"
+					title="Common drop"
 					name="drop5"
 					type="text"
 					error={errors.drop5}
@@ -122,7 +122,7 @@ const Form = ({ onCreateRelic, setPopupTrigger }) => {
 					register={register}
 				/>
 				<FormElement
-					title="Common drop 3"
+					title="Common drop"
 					name="drop6"
 					type="text"
 					error={errors.drop6}

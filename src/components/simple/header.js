@@ -8,7 +8,7 @@ const Header = ({ onSearchChange, onCreateRelic }) => {
 	const [popupTrigger, setPopupTrigger] = useState(false)
 	return (
 		<div className="header-container">
-			<div className="header-title">
+			<div className="header-box">
 				<h1 className="header">Relic Tracker</h1>
 				<SearchBox onSearchChange={onSearchChange} />
 			</div>
