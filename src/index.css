@@ -20,6 +20,15 @@ button {
   cursor: pointer;
 }
 
+* ~ button:hover {
+  background-color: var(--border-light);
+  border: 1px solid var(--border-dark);
+}
+
+* ~ button:active {
+  border: 1px solid var(--font-color);
+}
+
 body {
   height: 100%;
   margin: 0;

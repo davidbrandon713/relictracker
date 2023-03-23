@@ -91,7 +91,12 @@
 }
 
 #createRelic:hover {
-  background-color: var(--main-saturated);
+  background-color: var(--border-light);
+  border: 1px solid var(--border-dark);
+}
+
+#createRelic:active {
+  border: 1px solid var(--font-color);
 }
 
 #createRelic .cardTitle {

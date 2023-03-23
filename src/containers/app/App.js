@@ -11,17 +11,17 @@ const App = () => {
 	const userid = 'David'
 	const [searchfield, setSearchfield] = useState('')
 	const [relics, setRelics] = useState([])
-  const [windowSize, setWindowSize] = useState({
-    height: window.innerHeight,
-  })
+	const [windowSize, setWindowSize] = useState({
+		height: window.innerHeight,
+	})
 
-  useEffect(() => {
-    window.onresize = () => {
-      setWindowSize({
-        height: window.innerHeight,
-      })
-    }
-  }, [])
+	useEffect(() => {
+		window.onresize = () => {
+			setWindowSize({
+				height: window.innerHeight,
+			})
+		}
+	}, [])
 
 	useEffect(() => {
 		onGetRelics()
@@ -86,15 +86,15 @@ const App = () => {
 				onSearchChange={onSearchChange}
 				onCreateRelic={onCreateRelic}
 			/>
-      <Scroll height={windowSize.height}>
-        <ErrorBoundry>
-          <CardList
-            userid={userid}
-            relics={filteredRelics}
-            serverIP={serverIP}
-          />
-        </ErrorBoundry>
-      </Scroll>
+			<Scroll height={windowSize.height}>
+				<ErrorBoundry>
+					<CardList
+						userid={userid}
+						relics={filteredRelics}
+						serverIP={serverIP}
+					/>
+				</ErrorBoundry>
+			</Scroll>
 		</div>
 	)
 }

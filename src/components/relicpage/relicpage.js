@@ -106,7 +106,7 @@ const RelicPage = (props) => {
 			>
 				<div
 					className="window"
-          id="relicPageWindow"
+					id="relicPageWindow"
 					style={{
 						top: window.innerHeight / 2 - 278,
 						right: window.innerWidth / 2 - 190,

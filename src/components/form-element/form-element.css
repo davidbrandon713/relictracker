@@ -71,8 +71,6 @@
   color: var(--font-dark);
 }
 
-
-
 .form-container button {
   position: relative;
   display: block;
@@ -100,6 +98,6 @@
 }
 
 .form-container button:hover {
-  border: 1px solid var(--font-color);
-  background-color: var(--main-saturated);
+  border: 1px solid var(--border-dark);
+  background-color: var(--border-light);
 }

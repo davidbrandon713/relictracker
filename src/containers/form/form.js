@@ -28,18 +28,14 @@ const Form = ({ onCreateRelic, setPopupTrigger }) => {
 
 	const onSubmit = (data) => {
 		console.log(data)
-		onCreateRelic(
-			data.id,
-			data.name,
-			[
-				data.drop1,
-				data.drop2,
-				data.drop3,
-				data.drop4,
-				data.drop5,
-				data.drop6,
-			],
-		)
+		onCreateRelic(data.id, data.name, [
+			data.drop1,
+			data.drop2,
+			data.drop3,
+			data.drop4,
+			data.drop5,
+			data.drop6,
+		])
 		setPopupTrigger(false)
 	}
 
