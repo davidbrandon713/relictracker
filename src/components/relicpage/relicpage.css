@@ -1,344 +1,335 @@
 @charset "utf-8";
 
 .window {
-  position: fixed;
-  display: flex;
-  top: 0;
-  right: 0;
-  width: 380px;
-  height: auto;
-  background-color: var(--main-color);
-  border: 1px solid var(--border-light);
-  border-radius: 4px;
-  box-shadow: 0 2px 12px black;
-  box-sizing: border-box;
-  z-index: 20;
+	position: fixed;
+	display: flex;
+	width: 380px;
+	height: auto;
+	background-color: var(--main-color);
+	border: 1px solid var(--border-light);
+	border-radius: 4px;
+	box-shadow: 0 2px 12px black;
+	box-sizing: border-box;
+	z-index: 999;
 }
 
 .react-draggable-dragging {
-  border: 1px solid var(--font-color);
+	border: 1px solid var(--font-color);
 }
 
 .windowInner {
-  position: relative;
-  justify-content: center;
-  border-radius: 5px;
-  border-collapse: collapse;
-  width: 100%;
-  height: 100%;
-  padding: 12px;
-  color: var(--font-color);
-  background-color: var(--secondary-color);
+	position: relative;
+	justify-content: center;
+	border-radius: 5px;
+	border-collapse: collapse;
+	width: 100%;
+	height: 100%;
+	padding: 12px;
+	color: var(--font-color);
+	background-color: var(--secondary-color);
 }
 
 .windowInner button {
-  font-size: 14px;
-  height: 24px;
-  width: auto;
-  color: var(--font-color);
-  background-color: var(--tertiary-color);
-  border: 1px solid var(--border-light);
-  border-radius: 3px;
-  transition: 20ms ease-in;
+	font-size: 14px;
+	height: 24px;
+	width: auto;
+	color: var(--font-color);
+	background-color: var(--tertiary-color);
+	border: 1px solid var(--border-light);
+	border-radius: 3px;
+	transition: 20ms ease-in;
 }
 
 .window button:hover {
-  background-color: var(--border-light);
-  border: 1px solid var(--border-dark);
+	background-color: var(--border-light);
+	border: 1px solid var(--border-dark);
 }
 
 .window button:active {
-  border: 1px solid var(--font-color);
+	border: 1px solid var(--font-color);
 }
 
 .dragBar {
-  display: flex;
-  width: 100% + 24px;
-  height: 46px;
-  margin: -12px -12px 8px -12px;
-  cursor: move;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
+	display: flex;
+	width: 100% + 24px;
+	height: 46px;
+	margin: -12px -12px 8px -12px;
+	cursor: move;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
 }
 
 .windowInner .relicTitle {
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  background-color: var(--tertiary-color);
-  border-bottom: 1px solid var(--border-light);;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
+	width: 100%;
+	margin: 0;
+	text-align: center;
+	background-color: var(--tertiary-color);
+	border-bottom: 1px solid var(--border-light);
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
 }
 
 .windowInner .closeBtn {
-  position: absolute;
-  font-size: 14px;
-  top: 10px;
-  right: 8px;
+	position: absolute;
+	font-size: 14px;
+	top: 10px;
+	right: 8px;
 }
-
-
-
 
 /*    Top Container    */
 
 .topContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-bottom: 8px;
 }
 
 .topContainer div {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: none;
-  align-items: center;
-  color: black;
-  width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: none;
+	align-items: center;
+	color: black;
+	width: 100%;
 }
 
 .topContainer p {
-  margin: auto 12px;
-  padding: 4px 0;
-  font-size: 20px;
-  flex-grow: 1;
-  border: 1px solid var(--border-dark);
-  border-bottom: none;
+	margin: auto 12px;
+	padding: 4px 0;
+	font-size: 20px;
+	flex-grow: 1;
+	border: 1px solid var(--border-dark);
+	border-bottom: none;
 }
 
 .topContainer p:last-child {
-  border-bottom: 1px solid var(--border-dark);
+	border-bottom: 1px solid var(--border-dark);
 }
 
 .topContainer button {
-  position: relative;
-  width: 26px;
-  height: 26px;
-  font-size: 18px;
+	position: relative;
+	width: 26px;
+	height: 26px;
+	font-size: 18px;
 }
 
 .topContainer .dropRare {
-  background-color: rgb(211, 196, 106);
+	background-color: rgb(211, 196, 106);
 }
 
 .topContainer .dropUncommon {
-  background-color: rgb(157, 157, 157);
+	background-color: rgb(157, 157, 157);
 }
 
 .topContainer .dropCommon {
-  background-color: rgb(170, 121, 72);
+	background-color: rgb(170, 121, 72);
 }
-
 
 /*    Mid Container    */
 
 .midContainer {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: none;
-  margin-bottom: 8px;
-  width: 100%;
-  height: auto;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: none;
+	margin-bottom: 8px;
+	width: 100%;
+	height: auto;
 }
 
 .midContainer div {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: none;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: none;
+	justify-content: space-around;
+	align-items: center;
+	width: 50%;
 }
 
 .midContainer div h5 {
-  margin: 0;
+	margin: 0;
 }
-
 
 /*    Bottom Window    */
 
 .botContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: none;
-  font-size: 12px;
-  margin-bottom: 8px;
-  background-color: var(--tertiary-color)
+	display: flex;
+	flex-direction: row;
+	flex-wrap: none;
+	font-size: 12px;
+	margin-bottom: 8px;
+	background-color: var(--tertiary-color);
 }
 
 .botContainer div {
-  width: 50%;
+	width: 50%;
 }
 
 .botContainer span {
-  width: 100%;
-  margin: auto;
-  border-bottom: 1px solid var(--border-light);
+	width: 100%;
+	margin: auto;
+	border-bottom: 1px solid var(--border-light);
 }
 
 .botContainer span:last-child {
-  border: none;
+	border: none;
 }
 
 /*    Drop Window    */
 
 .dropWindow {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border: 1px solid var(--border-light);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border: 1px solid var(--border-light);
 }
 
 .dropWindow span {
-  display: inline;
-  padding: 6px;
-  text-align: right;
+	display: inline;
+	padding: 6px;
+	text-align: right;
 }
 
 /*    Data Window    */
 
 .dataWindow {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: none;
 }
 
 .dataWindow div {
-  width: 33%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border: 1px solid var(--border-light);
-  border-left: none;
+	width: 33%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border: 1px solid var(--border-light);
+	border-left: none;
 }
 
 .dataWindow span {
-  text-align: center;
-  padding: 6px 0;
+	text-align: center;
+	padding: 6px 0;
 }
 
 /*    Calc Window    */
 
 .calcContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: none;
-  justify-content: space-around;
-  padding: 4px 0;
-  box-sizing: border-box;
-  border: 1px solid var(--border-light);
-  background-color: var(--tertiary-color);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: none;
+	justify-content: space-around;
+	padding: 4px 0;
+	box-sizing: border-box;
+	border: 1px solid var(--border-light);
+	background-color: var(--tertiary-color);
 }
 
 .calcItem {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: none;
-  justify-content: space-around;
-  width: 60px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: none;
+	justify-content: space-around;
+	width: 60px;
 }
 
 .calcTitle {
-  margin: 0;
-  font-size: 12px;
+	margin: 0;
+	font-size: 12px;
 }
 
 .calcValueContainer {
-  display: flex;
-  flex-grow: 1;
+	display: flex;
+	flex-grow: 1;
 }
 
 .calcValue {
-  margin: auto;
-  font-size: 18px;
+	margin: auto;
+	font-size: 18px;
 }
 
-
 @media all and (width < 768px) {
-  .window {
-    width: 280px;
-    box-shadow: 0 2px 8px black;
-  }
+	.window {
+		width: 280px;
+		box-shadow: 0 2px 8px black;
+	}
 
-  .windowInner {
-    width: 100%;
-    padding: 6px;
-  }
+	.windowInner {
+		width: 100%;
+		padding: 6px;
+	}
 
-  .windowInner button {
-    height: 16px;
-    font-size: 10px;
-  }
+	.windowInner button {
+		height: 16px;
+		font-size: 10px;
+	}
 
-  .windowInner .closeBtn {
-    font-size: 10px;
-    top: 6px;
-    right: 6px;
-  }
+	.windowInner .closeBtn {
+		font-size: 10px;
+		top: 6px;
+		right: 6px;
+	}
 
-  .dragBar {
-    height: 30px;
-    margin: -6px -6px 6px -6px;
-  }
+	.dragBar {
+		height: 30px;
+		margin: -6px -6px 6px -6px;
+	}
 
-  .relicTitle {
-    font-size: 20px;
-  }
+	.relicTitle {
+		font-size: 20px;
+	}
 
-  .topContainer {
-    margin-bottom: 6px;
-  }
+	.topContainer {
+		margin-bottom: 6px;
+	}
 
-  .topContainer p {
-    font-size: 12px;
-    margin: auto 6px;
-  }
+	.topContainer p {
+		font-size: 12px;
+		margin: auto 6px;
+	}
 
-  .topContainer button {
-    position: relative;
-    width: 16px;
-  }
+	.topContainer button {
+		position: relative;
+		width: 16px;
+	}
 
-  .midContainer {
-    margin-bottom: 6px;
-    font-size: 12px;
-  }
+	.midContainer {
+		margin-bottom: 6px;
+		font-size: 12px;
+	}
 
-  .botContainer {
-    font-size: 10px;
-    margin-bottom: 6px;
-  }
+	.botContainer {
+		font-size: 10px;
+		margin-bottom: 6px;
+	}
 
-  .botContainer span {
-    padding: 4px;
-  }
+	.botContainer span {
+		padding: 4px;
+	}
 
-  .dataWindow div {
-    width: 33%;
-  }
+	.dataWindow div {
+		width: 33%;
+	}
 
-  .dataWindow span {
-    display: inline;
-    padding: 4px 0;
-  }
+	.dataWindow span {
+		display: inline;
+		padding: 4px 0;
+	}
 
-  .calcContainer {
-    padding: 2px 0;
-  }
+	.calcContainer {
+		padding: 2px 0;
+	}
 
-  .calcItem {
-    width: 48px;
-  }
+	.calcItem {
+		width: 48px;
+	}
 
-  .calcTitle {
-    font-size: 10px;
-  }
+	.calcTitle {
+		font-size: 10px;
+	}
 
-  .calcValue {
-    font-size: 12px;
-  }
-  
+	.calcValue {
+		font-size: 12px;
+	}
 }

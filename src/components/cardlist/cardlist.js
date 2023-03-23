@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import ErrorBoundry from '../simple/error-boundry';
-import RelicPage from '../relicpage/relicpage';
-import Card from '../card/card';
+import React, { useState } from 'react'
+import ErrorBoundry from '../simple/error-boundry'
+import RelicPage from '../relicpage/relicpage'
+import Card from '../card/card'
 
-import '../card/card.css';
+import '../card/card.css'
 
 const CardList = (props) => {
-	const [selectedRelic, setSelectedRelic] = useState('None');
+	const [selectedRelic, setSelectedRelic] = useState('None')
 	const [inventory, setInventory] = useState({
 		id: 'mesoN5',
 		data: [0, 0, 0, 0, 0, 0],
-	});
-	const [popupTrigger, setPopupTrigger] = useState(false);
-	const { userid, relics, serverIP } = props;
+	})
+	const [popupTrigger, setPopupTrigger] = useState(false)
+	const { userid, relics, serverIP } = props
 
 	const setRelic = async (relic) => {
 		if (selectedRelic !== relic) {
@@ -23,12 +23,12 @@ const CardList = (props) => {
 				})
 					.then((response) => response.json())
 					.then((data) => setInventory(data))
-					.then(setSelectedRelic(relic));
-			};
-			await onGetRelicInventory(relic);
+					.then(setSelectedRelic(relic))
+			}
+			await onGetRelicInventory(relic)
 		}
-		setPopupTrigger(true);
-	};
+		setPopupTrigger(true)
+	}
 
 	// Save session drops to user document
 	const saveInventory = async (relic, sessionDrops, bestStreak) => {
@@ -40,8 +40,8 @@ const CardList = (props) => {
 			body: JSON.stringify({ sessionDrops, bestStreak }),
 		})
 			.then((response) => response.json())
-			.then((data) => setInventory(data));
-	};
+			.then((data) => setInventory(data))
+	}
 
 	return (
 		<>
@@ -56,12 +56,14 @@ const CardList = (props) => {
 									drops={relic.drops}
 									clickEvent={() => setRelic(relic)}
 								/>
-							);
+							)
 						})}
 					</div>
 				) : (
-          <h3 className='error'>No relics match search criteria</h3>
-        )}
+					<>
+						<h3 className="error">No relics match search criteria</h3>
+					</>
+				)}
 			</ErrorBoundry>
 			<ErrorBoundry>
 				<RelicPage
@@ -73,7 +75,7 @@ const CardList = (props) => {
 				/>
 			</ErrorBoundry>
 		</>
-	);
-};
+	)
+}
 
-export default CardList;
+export default CardList

@@ -1,9 +1,11 @@
-import React from 'react';
-import SearchBox from './searchbox';
+import React, { useState } from 'react'
+import SearchBox from './searchbox'
+import Form from '../../containers/form/form'
 
-import './simple.css';
+import './simple.css'
 
-const Header = ({ onSearchChange }) => {
+const Header = ({ onSearchChange, onCreateRelic }) => {
+	const [popupTrigger, setPopupTrigger] = useState(false)
 	return (
 		<div className="header-container">
 			<div className="header-title">
@@ -14,13 +16,19 @@ const Header = ({ onSearchChange }) => {
 				<div
 					className="card"
 					id="createRelic"
-					onClick={() => null}
+					onClick={() => setPopupTrigger(!popupTrigger)}
 				>
 					<h1 className="cardTitle">Add Relic</h1>
 				</div>
 			</div>
+			{popupTrigger && (
+				<Form
+					onCreateRelic={onCreateRelic}
+					setPopupTrigger={setPopupTrigger}
+				/>
+			)}
 		</div>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header

@@ -14,10 +14,11 @@
   z-index: 10;
 }
 
-.header {
+.header-container .header {
   color: var(--font-color);
   font-size: 48px;
   margin: 0;
+  pointer-events: none;
 }
 
 .header-container button {
@@ -59,10 +60,6 @@
   outline: none;
 }
 
-::-webkit-scrollbar {
-  width: 0px;
-}
-
 .error {
   color: var(--font-color);
 }
@@ -81,16 +78,17 @@
 
 #createRelic {
   width: auto;
-  background-color: var(--tertiary-color);
+  background-color: var(--secondary-color);
   transition: all 50ms cubic-bezier(.21,.73,.72,.93);
+  transform: none;
+}
+
+#createRelic:hover {
+  background-color: var(--main-saturated);
 }
 
 #createRelic .cardTitle {
-  color: var(--font-dark);
-}
-
-#createRelic:hover .cardTitle {
-  color: var(--font-color);
+  transition: all 50ms cubic-bezier(.21,.73,.72,.93);
 }
 
 @media all and (width < 1024px) {

@@ -42,6 +42,7 @@
   width: 100%;
   margin: 0;
   color: var(--font-dark);
+  transition: 50ms cubic-bezier(.21,.73,.72,.93);
 }
 
 .card:hover .cardTitle {
@@ -118,7 +119,7 @@
 
 @media all and (max-width: 768px) {
   .cardlist-container .card {
-    width: 80px;
+    width: 90px;
     padding: 4px;
   }
 

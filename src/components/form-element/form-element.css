@@ -1,0 +1,104 @@
+.form-component {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+}
+
+.formElementContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: none;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.formElementContainer p {
+  position: relative;
+  height: 16px;
+  width: fit-content;
+  left: -2px;
+  margin: 0;
+  color: red;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.formElementContainer input {
+  padding: 6px 8px;
+  margin: 0;
+  color: var(--font-color);
+  background-color: var(--tertiary-color);
+  border: 1px solid var(--border-dark);
+  transition: 200ms ease;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.formElementContainer input:hover,
+.formElementContainer input:focus {
+  border: 1px solid var(--font-color);
+  outline: none;
+}
+
+.formElementContainer input:-webkit-autofill {
+  background-color: var(--tertiary-color);
+  -webkit-text-fill-color: black;
+}
+
+.formElementContainer h4 {
+  position: absolute;
+  pointer-events: none;
+  margin: 0;
+  top: 22px;
+  left: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--font-color);
+  transition: 200ms ease;
+  z-index: 11;
+}
+
+.formElementContainer input:-webkit-autofill + h4,
+.formElementContainer input:active + h4,
+.formElementContainer input:focus + h4,
+.formElementContainer input:not(:placeholder-shown) + h4 {
+  transform: translate(+0px, -28px);
+  color: var(--font-dark);
+}
+
+
+
+.form-container button {
+  position: relative;
+  display: block;
+  height: auto;
+  width: auto;
+  padding: 4px;
+  font-size: 20px;
+  color: var(--font-color);
+  background-color: var(--tertiary-color);
+  border: 1px solid var(--border-dark);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#btnSubmit {
+  margin: 4px 0;
+}
+
+.form-container .btnClose {
+  position: absolute;
+  font-size: 16px;
+  top: 4px;
+  right: 2px;
+}
+
+.form-container button:hover {
+  border: 1px solid var(--font-color);
+  background-color: var(--main-saturated);
+}

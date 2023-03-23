@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 :root {
   --main-color: #0d1119;
   --main-saturated: #141c23;
@@ -11,6 +13,12 @@
 
 html {
   min-height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-dark) var(--secondary-color);
+}
+
+button {
+  cursor: pointer;
 }
 
 body {
@@ -30,3 +38,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.app-container {
+  text-align: center;
+}
+
+body::-webkit-scrollbar {
+  position: relative;
+  width: 4px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--secondary-color)
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--border-dark);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  /* border: 3px solid var(--secondary-color);   creates padding around scroll thumb */
+}
+
