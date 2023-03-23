@@ -1,3 +1,14 @@
+:root {
+  --main-color: #0d1119;
+  --main-saturated: #141c23;
+  --secondary-color: #161b22;
+  --tertiary-color: #14181f;
+  --border-dark: #30363d;
+  --border-light: #314952;
+  --font-dark: #437180;
+  --font-color: #c7d1d6;
+}
+
 html {
   min-height: 100%;
 }
@@ -11,7 +22,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0d1119;
+  background-color: var(--main-color);
   /* background-image: linear-gradient(105deg, rgb(12, 17, 30), rgb(37, 44, 59)); */
 }
 

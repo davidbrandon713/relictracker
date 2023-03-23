@@ -1,143 +1,134 @@
 @charset "utf-8";
 
-:root {
-  --main-color: #0d1119;
-  --secondary-color: #161b22;
-  --secondary-saturated: #161f28;
-  --border-light: #406774;
-  --border-dark: #30363d;
-  --font-color: #c7d1d6;
-}
-
 .window {
   position: fixed;
   display: flex;
   top: 0;
   right: 0;
-  width: 420px;
+  width: 380px;
   height: auto;
-  background-color: black;
+  background-color: var(--main-color);
   border: 1px solid var(--border-light);
   border-radius: 4px;
-  box-shadow: 0 2px 10px black;
+  box-shadow: 0 2px 12px black;
   box-sizing: border-box;
+  z-index: 20;
 }
 
-.window:hover {
-  border: 1px solid var(--font-color);
-}
-
-.window button:active {
+.react-draggable-dragging {
   border: 1px solid var(--font-color);
 }
 
 .windowInner {
   position: relative;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 5px;
   border-collapse: collapse;
   width: 100%;
   height: 100%;
-  padding: 16px;
+  padding: 12px;
   color: var(--font-color);
-  background-color: var(--secondary-saturated);
-  /* background-image: linear-gradient(105deg, rgb(19, 26, 42), rgb(26, 51, 71)); */
+  background-color: var(--secondary-color);
+}
+
+.windowInner button {
+  font-size: 14px;
+  height: 24px;
+  width: auto;
+  color: var(--font-color);
+  background-color: var(--tertiary-color);
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  transition: 20ms ease-in;
+}
+
+.window button:hover {
+  background-color: var(--border-light);
+  border: 1px solid var(--border-dark);
+}
+
+.window button:active {
+  border: 1px solid var(--font-color);
 }
 
 .dragBar {
   display: flex;
-  width: 100% + 16px;
-  height: 72px;
-  margin: -16px -16px 0 -16px;
+  width: 100% + 24px;
+  height: 46px;
+  margin: -12px -12px 8px -12px;
   cursor: move;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .windowInner .relicTitle {
   width: 100%;
-  margin: auto;
+  margin: 0;
   text-align: center;
-}
-
-.windowInner button {
-  background-color: lightgrey;
-  border: 1px solid black;
-  border-radius: 5px;
+  background-color: var(--tertiary-color);
+  border-bottom: 1px solid var(--border-light);;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .windowInner .closeBtn {
   position: absolute;
-  width: 54px;
-  height: 24px;
-  font-size: 16px;
-  top: 16px;
-  right: 16px;
+  font-size: 14px;
+  top: 10px;
+  right: 8px;
 }
 
 
 
 
-/*    Drop List Window    */
+/*    Top Container    */
 
 .topContainer {
-  width: auto;
-  left: 0;
-  right: 0;
-  box-shadow: 0 5px 10px rgb(13, 25, 35);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 
 .topContainer div {
-  margin: 0;
-  display: block;
-  text-align: center;
-  justify-items: center;
-  border: 1px solid black;
-  border-bottom: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: none;
+  align-items: center;
   color: black;
   width: 100%;
-  height: auto;
-  font-weight: 600;
-}
-
-.topContainer div:last-child {
-  border-bottom: 1px solid black;
 }
 
 .topContainer p {
-  margin: 12px 0;
+  margin: auto 12px;
+  padding: 4px 0;
   font-size: 20px;
-  display: inline-block;
+  flex-grow: 1;
+  border: 1px solid var(--border-dark);
+  border-bottom: none;
+}
+
+.topContainer p:last-child {
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .topContainer button {
   position: relative;
-  top: 4px;
-  width: 42px;
-  height: 42px;
+  width: 26px;
+  height: 26px;
   font-size: 18px;
-  font-weight: 600;
-  transition: transform 50ms cubic-bezier(.21,.73,.72,.93);
-}
-
-.topContainer .btnMinus {
-  float: left;
-  left: 4px;
-}
-
-.topContainer .btnPlus {
-  float: right;
-  right: 4px;
 }
 
 .topContainer .dropRare {
-  background-color: rgb(245, 225, 111);
+  background-color: rgb(211, 196, 106);
 }
 
 .topContainer .dropUncommon {
-  background-color: rgb(181, 181, 181);
+  background-color: rgb(157, 157, 157);
 }
 
 .topContainer .dropCommon {
-  background-color: rgb(212, 149, 87);
+  background-color: rgb(170, 121, 72);
 }
 
 
@@ -148,27 +139,22 @@
   display: flex;
   flex-direction: row;
   flex-wrap: none;
-  margin: 12px auto;
+  margin-bottom: 8px;
   width: 100%;
   height: auto;
 }
 
 .midContainer div {
   display: flex;
+  flex-direction: row;
+  flex-wrap: none;
+  justify-content: space-around;
+  align-items: center;
   width: 50%;
 }
 
-.midContainer div button {
-  margin: auto;
-  width: 60px;
-  height: 24px;
-  font-size: 16px;
-}
-
-
 .midContainer div h5 {
-  margin: auto;
-  width: 33%;
+  margin: 0;
 }
 
 
@@ -178,152 +164,181 @@
   display: flex;
   flex-direction: row;
   flex-wrap: none;
-  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 8px;
+  background-color: var(--tertiary-color)
 }
 
 .botContainer div {
   width: 50%;
 }
 
-.botContainer h5 {
+.botContainer span {
   width: 100%;
-  border-bottom: 1px solid var(--border-dark);
   margin: auto;
+  border-bottom: 1px solid var(--border-light);
 }
 
-.botContainer h5:last-child {
+.botContainer span:last-child {
   border: none;
 }
 
-.dataWindow {
+/*    Drop Window    */
+
+.dropWindow {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border-light);
 }
 
-.dataWindow h5 {
+.dropWindow span {
+  display: inline;
+  padding: 6px;
   text-align: right;
-  padding: 6px 8px;
 }
 
+/*    Data Window    */
 
-/*    Calc Window    */
-
-.calcWindow {
+.dataWindow {
   display: flex;
   flex-direction: row;
   flex-wrap: none;
 }
 
-.calcWindow div {
+.dataWindow div {
   width: 33%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border-light);
   border-left: none;
 }
 
-.calcWindow h5 {
+.dataWindow span {
   text-align: center;
-  padding: 6px 0px;
+  padding: 6px 0;
+}
+
+/*    Calc Window    */
+
+.calcContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: none;
+  justify-content: space-around;
+  padding: 4px 0;
+  box-sizing: border-box;
+  border: 1px solid var(--border-light);
+  background-color: var(--tertiary-color);
+}
+
+.calcItem {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: none;
+  justify-content: space-around;
+  width: 60px;
+}
+
+.calcTitle {
+  margin: 0;
+  font-size: 12px;
+}
+
+.calcValueContainer {
+  display: flex;
+  flex-grow: 1;
+}
+
+.calcValue {
+  margin: auto;
+  font-size: 18px;
 }
 
 
-@media all and (width < 1024px) {
+@media all and (width < 768px) {
   .window {
-    width: 240px;
+    width: 280px;
+    box-shadow: 0 2px 8px black;
   }
 
   .windowInner {
     width: 100%;
-    padding: 8px;
+    padding: 6px;
+  }
+
+  .windowInner button {
+    height: 16px;
+    font-size: 10px;
   }
 
   .windowInner .closeBtn {
-    position: absolute;
-    width: auto;
-    height: 20px;
-    font-size: 12px;
+    font-size: 10px;
     top: 6px;
     right: 6px;
   }
 
   .dragBar {
-    height: 40px;
+    height: 30px;
+    margin: -6px -6px 6px -6px;
   }
 
-  .windowInner .relicTitle {
-    padding-top: 4px;
+  .relicTitle {
     font-size: 20px;
   }
 
-  .topContainer div {
-    height: 24px;
-    border-collapse: collapse;
+  .topContainer {
+    margin-bottom: 6px;
   }
 
   .topContainer p {
     font-size: 12px;
-    margin: auto;
+    margin: auto 6px;
   }
 
   .topContainer button {
     position: relative;
-    top: 2px;
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
-    font-weight: 400;
-    transition: transform 50ms cubic-bezier(.21,.73,.72,.93);
-  }
-
-  .topContainer .btnPlus {
-    right: 2px;
-  }
-
-  .topContainer .btnMinus {
-    left: 2px;
+    width: 16px;
   }
 
   .midContainer {
-    margin: 6px auto;
-    font-size: 10px;
-  }
-
-  .midContainer div button {
-    margin: auto;
-    width: auto;
-    height: 18px;
-    font-size: 10px;
+    margin-bottom: 6px;
+    font-size: 12px;
   }
 
   .botContainer {
     font-size: 10px;
+    margin-bottom: 6px;
   }
 
-  .botContainer div div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .botContainer h5 {
-    width: 100%;
+  .botContainer span {
     padding: 4px;
   }
 
-  .calcWindow div {
+  .dataWindow div {
     width: 33%;
   }
 
-  .calcWindow div h5 {
-    text-align: center;
+  .dataWindow span {
+    display: inline;
+    padding: 4px 0;
   }
 
-  .calcWindow div:last-child h5 {
-    padding: 4px 0;
+  .calcContainer {
+    padding: 2px 0;
+  }
+
+  .calcItem {
+    width: 48px;
+  }
+
+  .calcTitle {
+    font-size: 10px;
+  }
+
+  .calcValue {
+    font-size: 12px;
   }
   
 }

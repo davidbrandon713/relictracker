@@ -16,12 +16,12 @@ const Card = ({ name, drops, imgSrc, clickEvent }) => {
       <h1 className='cardTitle'>{name} Relic</h1>
       <img src={imgSrc} alt='relic' />
       <div className='dropListCard'>
-        <h4 className='dropRare'>{drops[0]}</h4>
-        <h4 className='dropUncommon'>{drops[1]}</h4>
-        <h4 className='dropUncommon'>{drops[2]}</h4>
-        <h4 className='dropCommon'>{drops[3]}</h4>
-        <h4 className='dropCommon'>{drops[4]}</h4>
-        <h4 className='dropCommon'>{drops[5]}</h4>
+        <p className='dropRare'>{drops[0]}</p>
+        <p className='dropUncommon'>{drops[1]}</p>
+        <p className='dropUncommon'>{drops[2]}</p>
+        <p className='dropCommon'>{drops[3]}</p>
+        <p className='dropCommon'>{drops[4]}</p>
+        <p className='dropCommon'>{drops[5]}</p>
       </div>
     </div>
   )

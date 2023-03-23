@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/simple/header';
-import CardList from '../components/cardlist/cardlist';
-import ErrorBoundry from '../components/simple/error-boundry';
-import Scroll from '../components/simple/scroll';
-
+import Header from '../../components/simple/header';
+import CardList from '../../components/cardlist/cardlist';
+import ErrorBoundry from '../../components/simple/error-boundry';
 
 import './App.css';
 
@@ -12,21 +10,6 @@ const App = () => {
   const [searchfield, setSearchfield] = useState('')
   const [relics, setRelics] = useState([])
   const [userid, ] = useState('David')
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  })
-  // const mobile = windowSize.width < 768
-  const tablet = windowSize.width < 1024
-
-  useEffect(() => {
-    window.onresize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
-    }
-  })
 
   useEffect(() => {
     onGetRelics()
@@ -46,6 +29,33 @@ const App = () => {
     .then(console.log('Initialized'))
   }
 
+  // Create new relic and user data
+  const onCreateRelic = async (id, name, drops) => {
+    await fetch(`http://${serverIP}:3001/relics/create`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: {
+        id,
+        name,
+        drops
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .then(
+      await fetch(`http://${serverIP}:3001/users/${userid}/createrelic`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: {
+          id
+        }
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .then(onGetRelics())
+    )
+  }
+
   // Filters relic list by searchfield
   const filteredRelics = relics.filter(relic => {
     let nameMatch = relic.name.toLowerCase().includes(searchfield.toLowerCase());
@@ -62,11 +72,9 @@ const App = () => {
   return (
     <div className="app-container">
       <Header onSearchChange={onSearchChange} />
-      <Scroll height={windowSize.height} tablet={tablet}>
-        <ErrorBoundry>
-          <CardList userid={userid} relics={filteredRelics} serverIP={serverIP} />
-        </ErrorBoundry>
-      </Scroll>
+      <ErrorBoundry>
+        <CardList userid={userid} relics={filteredRelics} serverIP={serverIP} />
+      </ErrorBoundry>
     </div>
   );
   

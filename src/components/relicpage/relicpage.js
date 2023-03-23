@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 import RelicPageItem from '../relicpage-drop/relicpage-drop'
+import CalcContainerItem from '../calc-container-item/calc-container-item'
 
 import './relicpage.css'
 
@@ -8,19 +9,18 @@ const RelicPage = ( props ) => {
   const initialState = [0, 0, 0, 0, 0, 0]
   const [sessionDrops, setSessionDrops] = useState(initialState)
   const [editMode, setEditMode] = useState(false)
+  const [streak, setStreak] = useState(0)
+  const [bestStreak, setBestStreak] = useState(0)
   const { relic, inventory, saveInventory, trigger, setTrigger } = props
+
+  const totalDropCount = inventory.data ? inventory.data.reduce((sum, num) => sum += num) + 
+    sessionDrops.reduce((sum, num) => sum += num) : 0
 
   useEffect(() => {
     newSession()
   }, [relic])
 
-  useEffect(() => {
-    console.log('Edit mode:', editMode)
-  }, [editMode])
-
   const calcPercent = (drop) => {
-    const totalDropCount = inventory.data.reduce((sum, num) => sum += num) + 
-      sessionDrops.reduce((sum, num) => sum += num)
     return (drop !== 0 ? ((drop / totalDropCount) * 100).toFixed(2) : 0)
   }
 
@@ -28,6 +28,16 @@ const RelicPage = ( props ) => {
     const updatedDrops = [...sessionDrops]
     updatedDrops[i] += 1
     setSessionDrops(updatedDrops)
+    if (!editMode) {
+      if (i == 0) {
+        setStreak(streak + 1)
+      } else {
+        if (streak > bestStreak) {
+          setBestStreak(streak)
+        }
+        setStreak(0)
+      }
+    }
   }
 
   const rmvDrop = (i) => {
@@ -35,12 +45,15 @@ const RelicPage = ( props ) => {
       const updatedDrops = [...sessionDrops]
       updatedDrops[i] -= 1
       setSessionDrops(updatedDrops)
+      if (i == 0 && !editMode) {
+        setStreak(streak - 1)
+      }
     }
   }
   
   const saveSession = () => {
     if (!sessionDrops.every(item => item === 0)) {
-      saveInventory(relic, sessionDrops)
+      saveInventory(relic, sessionDrops, bestStreak)
       console.log(`Saved ${relic.name} data`)
       newSession()
     }
@@ -55,7 +68,9 @@ const RelicPage = ( props ) => {
   const newSession = () => {
     if (!sessionDrops.every(item => item === 0)) {
       setSessionDrops(initialState)
-      console.log(`Cleared session for ${relic.name} => [${sessionDrops}]`)
+      setStreak(0)
+      setBestStreak(0)
+      console.log(`Cleared session for ${relic.name} => [${sessionDrops}] => [${bestStreak}]`)
     }
   }
 
@@ -64,7 +79,10 @@ const RelicPage = ( props ) => {
   }
 
   return (trigger) && (
-    <Draggable bounds="html" handle=".dragBar" >
+    <Draggable 
+      bounds="html" 
+      handle=".dragBar"
+    >
       <div className='window'>
         <div className='windowInner'>
           <div className='dragBar'>
@@ -123,7 +141,7 @@ const RelicPage = ( props ) => {
                 onClick={toggleEditMode} 
                 style={{
                   border: editMode && '1px solid red', 
-                  color: editMode && 'red' 
+                  color: editMode && 'red',
                 }}
               >
                 Edit
@@ -142,40 +160,47 @@ const RelicPage = ( props ) => {
           </div>
 
           <div className='botContainer'>
-            <div className='dataWindow'>
+            <div className='dropWindow'>
               { 
               relic.drops && relic.drops.map((drop, index) => 
-              <h5 key={`${drop}-${index}-drop`}>
+              <span key={`${drop}-${index}-drop`}>
                 {drop}
-              </h5> 
+              </span> 
               )}
             </div>
-            <div className='calcWindow'>
+            <div className='dataWindow'>
               <div>
                 { 
                 sessionDrops.map((data, index) => 
-                <h5 key={`${inventory.id}-${index}-session`}>
+                <span key={`${inventory.id}-${index}-session`}>
                   {data}
-                </h5> 
+                </span> 
                 )}
               </div>
               <div>
                 { 
                 inventory.data && inventory.data.map((item, index) => 
-                <h5 key={`${inventory.id}-${index}-total`}>
+                <span key={`${inventory.id}-${index}-total`}>
                   {item + sessionDrops[index]}
-                </h5> 
+                </span> 
                 )}
               </div>
               <div>
                 { 
                 inventory.data && inventory.data.map((item, index) => 
-                <h5 key={`${inventory.id}-${index}-percent`}>
+                <span key={`${inventory.id}-${index}-percent`}>
                   {calcPercent(item + sessionDrops[index])}%
-                </h5> 
+                </span> 
                 )}
               </div>
             </div>
+          </div>
+
+          <div className='calcContainer'>
+            <CalcContainerItem title={'Total drops'} value={totalDropCount} />
+            <CalcContainerItem title={'All time'} value={inventory.best ? inventory.best : 0} />
+            <CalcContainerItem title={'Session'} value={bestStreak} />
+            <CalcContainerItem title={'Current'} value={streak} />
           </div>
         </div>
       </div>

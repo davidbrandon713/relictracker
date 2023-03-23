@@ -2,11 +2,11 @@ import React from 'react'
 
 import './simple.css'
 
-const TextBox = ({ onSearchChange }) => {
+const SearchBox = ({ onSearchChange }) => {
   return (
-    <div className='textbox-container'>
+    <div className='searchbox-container'>
       <input
-        className='textbox'
+        className='searchbox'
         aria-label='Search relics'
         type='search'
         placeholder='Search relics'
@@ -16,4 +16,4 @@ const TextBox = ({ onSearchChange }) => {
   );
 }
 
-export default TextBox;
+export default SearchBox;

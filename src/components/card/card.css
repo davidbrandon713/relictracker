@@ -1,62 +1,67 @@
 @charset "utf-8";
 
-:root {
-  --main-color: #0d1119;
-  --secondary-color: #161b22;
-  --secondary-saturated: #161f28;
-  --border-light: #406774;
-  --border-dark: #30363d;
-  --font-color: #c7d1d6;
-}
-
 .cardlist-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 4px;
-  gap: 16px;
+  padding: 12px;
+  gap: 12px;
   justify-content: center;
+  align-items: center;
+}
+
+.error {
+  color: var(--font-color);
 }
 
 .card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 12px;
+  padding: 8px;
   width: 220px;
   height: auto;
   cursor: pointer;
   border: 1px solid var(--border-dark);
-  border-radius: 4px;
   background-color: var(--secondary-color);
-  /* background-color: rgb(47, 61, 70); */
-  box-shadow: 0 2px 10px black;
+  border-radius: 3px;
+  box-shadow: 0 1px 8px black;
   transition: 50ms cubic-bezier(.21,.73,.72,.93);
 }
 
 .card:hover {
   border: 1px solid var(--font-color);
-  background-color: var(--secondary-saturated);
+  background-color: var(--main-saturated);
   transform: scale(1.02);
 }
 
 .cardTitle {
   width: 100%;
-  margin: 0 0 8px;
-  color: var(--border-light);
+  margin: 0;
+  color: var(--font-dark);
 }
 
 .card:hover .cardTitle {
   color: var(--font-color);
 }
 
-.dropListCard {
-  width: 100%;
-  margin-top: 8px;
-  border: 1px solid black;
+.card img {
+  margin: 8px 0;
 }
 
-.dropListCard h4 {
+.dropListCard {
+  width: 100%;
+  margin: 0;
+  border: 1px solid var(--border-dark);
+}
+
+.dropListCard p {
   padding: 2px;
   margin: auto;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -65,7 +70,7 @@
 }
 
 .card:hover .dropRare {
-  background-color: rgb(245, 225, 111);
+  background-color: rgb(211, 196, 106);
 }
 
 .card .dropUncommon {
@@ -73,7 +78,7 @@
 }
 
 .card:hover .dropUncommon {
-  background-color: rgb(181, 181, 181);
+  background-color: rgb(157, 157, 157);
 }
 
 .card .dropCommon {
@@ -81,30 +86,38 @@
 }
 
 .card:hover .dropCommon {
-  background-color: rgb(212, 149, 87);
+  background-color: rgb(170, 121, 72);
 }
 
 @media all and (max-width: 1024px) {
-  .card {
-    width: 120px;
+
+  .cardlist-container {
     padding: 8px;
+    gap: 8px;
+  }
+
+  .cardlist-container .card {
+    width: 140px;
+    padding: 6px;
+    box-shadow: 0 1px 6px black;
   }
 
   .cardTitle {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .card img {
     width: 40%;
+    margin: 4px 0;
   }
 
-  .dropListCard {
-    font-size: 8px;
+  .dropListCard p {
+    font-size: 10px;
   }
 }
 
 @media all and (max-width: 768px) {
-  .card {
+  .cardlist-container .card {
     width: 80px;
     padding: 4px;
   }
