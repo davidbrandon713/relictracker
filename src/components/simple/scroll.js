@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './simple.css'
 
-const Scroll = (props) => {
+const Scroll = ({ children }) => {
+	const [windowSize, setWindowSize] = useState({
+		height: window.innerHeight,
+	})
+
+	useEffect(() => {
+		window.onresize = () => {
+			setWindowSize({
+				height: window.innerHeight,
+			})
+		}
+	}, [])
+
 	return (
 		<div
 			className="scroll-container"
 			style={{
-				height: props.height - 99,
+				height: windowSize.height - 99,
 			}}
 		>
-			{props.children}
+			{children}
 		</div>
 	)
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Header from '../../components/simple/header'
 import CardList from '../../components/cardlist/cardlist'
 import ErrorBoundry from '../../components/simple/error-boundry'
@@ -11,18 +11,6 @@ const App = () => {
 	const userid = 'David'
 	const [searchfield, setSearchfield] = useState('')
 	const [relics, setRelics] = useState([])
-	const [windowSize, setWindowSize] = useState({
-		height: window.innerHeight,
-	})
-
-	useEffect(() => {
-		window.onresize = () => {
-			setWindowSize({
-				height: window.innerHeight,
-			})
-		}
-	}, [])
-
 	useEffect(() => {
 		onGetRelics()
 	}, [])
@@ -86,7 +74,7 @@ const App = () => {
 				onSearchChange={onSearchChange}
 				onCreateRelic={onCreateRelic}
 			/>
-			<Scroll height={windowSize.height}>
+			<Scroll>
 				<ErrorBoundry>
 					<CardList
 						userid={userid}

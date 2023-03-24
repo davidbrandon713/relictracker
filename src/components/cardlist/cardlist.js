@@ -15,19 +15,19 @@ const CardList = (props) => {
 	const { userid, relics, serverIP } = props
 
 	const setRelic = async (relic) => {
-		if (selectedRelic !== relic) {
-			// Retrieve user data for this relic
-			const onGetRelicInventory = async (relic) => {
-				await fetch(`http://${serverIP}:3001/users/${userid}/${relic.id}`, {
-					method: 'GET',
-				})
-					.then((response) => response.json())
-					.then((data) => setInventory(data))
-					.then(setSelectedRelic(relic))
-			}
-			await onGetRelicInventory(relic)
+		if (selectedRelic === relic) return setPopupTrigger(true)
+		// Retrieve user data for this relic
+		const onGetRelicInventory = async (relic) => {
+			await fetch(`http://${serverIP}:3001/users/${userid}/${relic.id}`, {
+				method: 'GET',
+			})
+				.then((response) => response.json())
+				.then((data) => setInventory(data))
+				.then(setSelectedRelic(relic))
+				.then(setPopupTrigger(true))
+				.then(console.log(`Fetch ${relic.name} data`))
 		}
-		setPopupTrigger(true)
+		await onGetRelicInventory(relic)
 	}
 
 	// Save session drops to user document
@@ -41,6 +41,7 @@ const CardList = (props) => {
 		})
 			.then((response) => response.json())
 			.then((data) => setInventory(data))
+			.then(console.log(`Saved ${relic.name} data`))
 	}
 
 	return (

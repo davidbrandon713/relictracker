@@ -1,6 +1,7 @@
 export const relicList = [
   {
-    name: 'Neo K3 Relic',
+    name: 'Neo K3',
+    id: 'neoK3',
     drops: [
       'Kronen Prime Blade',
       'Tiberon Prime Barrel',
@@ -11,7 +12,8 @@ export const relicList = [
     ]
   },
   {
-    name: 'Neo S13 Relic',
+    name: 'Neo S13',
+    id: 'neoS13',
     drops: [
       'Saryn Prime Chassis',
       'Forma Blueprint',
@@ -22,7 +24,8 @@ export const relicList = [
     ]
   },
   {
-    name: 'Axi A7 Relic',
+    name: 'Axi A7',
+    id: 'axiA7',
     drops: [
       'Ash Prime Systems',
       'Fragor Prime Blueprint',

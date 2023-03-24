@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Draggable from 'react-draggable'
 import RelicPageItem from '../relicpage-drop/relicpage-drop'
 import CalcContainerItem from '../calc-container-item/calc-container-item'
@@ -10,7 +10,7 @@ const RelicPage = (props) => {
 	const [sessionDrops, setSessionDrops] = useState(initialState)
 	const [editMode, setEditMode] = useState(false)
 	const [streak, setStreak] = useState(0)
-	const [bestStreak, setBestStreak] = useState(0)
+	const [sessionStreak, setSessionStreak] = useState(0)
 	const [draggablePos, setDraggablePos] = useState()
 	const { relic, inventory, saveInventory, trigger, setTrigger } = props
 
@@ -24,8 +24,8 @@ const RelicPage = (props) => {
 	}, [relic])
 
 	const eventLogger = (e, data) => {
-		// console.log('Event: ', e);
-		// console.log('Data: ', data);
+		// console.log('Event: ', e)
+		// console.log('Data: ', data)
 		setDraggablePos({ x: data.lastX, y: data.lastY })
 	}
 
@@ -37,59 +37,47 @@ const RelicPage = (props) => {
 		const updatedDrops = [...sessionDrops]
 		updatedDrops[i] += 1
 		setSessionDrops(updatedDrops)
-		if (!editMode) {
-			if (i === 0) {
-				setStreak(streak + 1)
-			} else {
-				if (streak > bestStreak) {
-					setBestStreak(streak)
-				}
-				setStreak(0)
-			}
-		}
+		if (editMode) return
+		if (i === 0) return setStreak((prevStreak) => prevStreak + 1)
+		if (streak <= sessionStreak) return setStreak(0)
+		setSessionStreak(streak) // useCallback for sessionStreak ?
+		setStreak(0)
 	}
 
 	const rmvDrop = (i) => {
-		if (editMode || sessionDrops[i] > 0) {
-			const updatedDrops = [...sessionDrops]
-			updatedDrops[i] -= 1
-			setSessionDrops(updatedDrops)
-			if (i === 0 && !editMode) {
-				setStreak(streak - 1)
-			}
-		}
+		if (!editMode && sessionDrops[i] === 0) return
+		const updatedDrops = [...sessionDrops]
+		updatedDrops[i] -= 1
+		setSessionDrops(updatedDrops)
+		if (editMode || i !== 0) return
+		setStreak((prevStreak) => prevStreak - 1)
 	}
 
 	const saveSession = () => {
-		if (!sessionDrops.every((item) => item === 0)) {
-			saveInventory(relic, sessionDrops, bestStreak)
-			console.log(`Saved ${relic.name} data`)
-			newSession()
-		}
+		if (sessionDrops.every((item) => item === 0)) return
+		saveInventory(relic, sessionDrops, sessionStreak)
+		newSession()
 	}
 
 	const saveAndClose = () => {
-		if (!sessionDrops.every((item) => item === 0)) {
-			if (window.confirm('Save session?')) {
-				saveSession()
-				setEditMode(false)
-				setTrigger(false)
-			}
-		} else {
+		if (sessionDrops.every((item) => item === 0)) {
+			setEditMode(false)
+			setTrigger(false)
+			return
+		}
+		if (window.confirm('Save session?')) {
+			saveSession()
 			setEditMode(false)
 			setTrigger(false)
 		}
 	}
 
 	const newSession = () => {
-		if (!sessionDrops.every((item) => item === 0)) {
-			setSessionDrops(initialState)
-			setStreak(0)
-			setBestStreak(0)
-			console.log(
-				`Cleared session for ${relic.name} => [${sessionDrops}] => [${bestStreak}]`
-			)
-		}
+		if (sessionDrops.every((item) => item === 0)) return
+		setSessionDrops(initialState)
+		setStreak(0)
+		setSessionStreak(0)
+		console.log(`Cleared session for ${relic.name} => [${sessionDrops}]`)
 	}
 
 	const toggleEditMode = () => {
@@ -232,7 +220,8 @@ const RelicPage = (props) => {
 							/>
 							<CalcContainerItem
 								title={'Session'}
-								value={bestStreak}
+								// value={sessionStreak > streak ? sessionStreak : streak}
+								value={sessionStreak}
 							/>
 							<CalcContainerItem
 								title={'Current'}
