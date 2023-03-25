@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 import RelicPageItem from '../relicpage-drop/relicpage-drop'
 import CalcContainerItem from '../calc-container-item/calc-container-item'
@@ -18,6 +18,7 @@ const RelicPage = (props) => {
 		? inventory.data.reduce((sum, num) => (sum += num)) +
 		  sessionDrops.reduce((sum, num) => (sum += num))
 		: 0
+  
 
 	useEffect(() => {
 		newSession()

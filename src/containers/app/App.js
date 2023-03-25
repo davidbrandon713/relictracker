@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../components/simple/header'
 import CardList from '../../components/cardlist/cardlist'
 import ErrorBoundry from '../../components/simple/error-boundry'
