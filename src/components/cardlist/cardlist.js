@@ -15,7 +15,7 @@ const CardList = (props) => {
 	const { userid, relics, serverIP } = props
 
 	const setRelic = async (relic) => {
-		if (selectedRelic === relic) return setPopupTrigger((prevState) => !prevState)
+		if (selectedRelic === relic) return setPopupTrigger(true)
 		// Retrieve user data for this relic
 		const onGetRelicInventory = async (relic) => {
 			await fetch(`http://${serverIP}:3001/users/${userid}/${relic.id}`, {

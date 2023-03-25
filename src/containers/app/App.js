@@ -11,6 +11,7 @@ const App = () => {
 	const userid = 'David'
 	const [searchfield, setSearchfield] = useState('')
 	const [relics, setRelics] = useState([])
+  
 	useEffect(() => {
 		onGetRelics()
 	}, [])
