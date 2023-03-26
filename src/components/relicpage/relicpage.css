@@ -9,7 +9,6 @@
 	border: 1px solid var(--border-light);
 	border-radius: 4px;
 	box-shadow: 0 2px 12px black;
-	box-sizing: border-box;
 	z-index: 999;
 }
 
@@ -221,7 +220,6 @@
 	flex-wrap: none;
 	justify-content: space-around;
 	padding: 4px 0;
-	box-sizing: border-box;
 	border: 1px solid var(--border-light);
 	background-color: var(--tertiary-color);
 }

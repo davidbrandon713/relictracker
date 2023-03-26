@@ -7,11 +7,10 @@ import Scroll from '../../components/simple/scroll'
 import '../../index.css'
 
 const App = () => {
-	const serverIP = 'localhost'
 	const userid = 'David'
 	const [searchfield, setSearchfield] = useState('')
 	const [relics, setRelics] = useState([])
-  
+
 	useEffect(() => {
 		onGetRelics()
 	}, [])
@@ -22,7 +21,7 @@ const App = () => {
 
 	// Get all relic data
 	const onGetRelics = async () => {
-		await fetch(`http://${serverIP}:3001/relics/all/${userid}`, {
+		await fetch(`http://localhost:3001/relics/all/${userid}`, {
 			method: 'GET',
 		})
 			.then((response) => response.json())
@@ -32,7 +31,7 @@ const App = () => {
 
 	// Create new relic and user data
 	const onCreateRelic = async (id, name, drops) => {
-		await fetch(`http://${serverIP}:3001/relics/create`, {
+		await fetch(`http://localhost3001/relics/create`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -44,7 +43,7 @@ const App = () => {
 			.then((response) => response.json())
 			.then((data) => console.log(data))
 			.then(
-				await fetch(`http://${serverIP}:3001/users/${userid}/createrelic`, {
+				await fetch(`http://localhost:3001/users/${userid}/createrelic`, {
 					method: 'PATCH',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
@@ -80,7 +79,6 @@ const App = () => {
 					<CardList
 						userid={userid}
 						relics={filteredRelics}
-						serverIP={serverIP}
 					/>
 				</ErrorBoundry>
 			</Scroll>

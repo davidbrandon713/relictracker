@@ -14,7 +14,7 @@ const RelicPage = (props) => {
 	const [draggablePos, setDraggablePos] = useState()
 	const { relic, inventory, saveInventory, trigger, setTrigger } = props
 
-  useEffect(() => {
+	useEffect(() => {
 		newSession()
 	}, [relic])
 
@@ -74,10 +74,10 @@ const RelicPage = (props) => {
 
 	const newSession = () => {
 		if (sessionDrops.every((item) => item === 0)) return
-    setSessionDrops(initialState)
-    setStreak(0)
-    setSessionStreak(0)
-    console.log(`Cleared session for ${relic.name} => [${sessionDrops}]`)
+		setSessionDrops(initialState)
+		setStreak(0)
+		setSessionStreak(0)
+		console.log(`Cleared session for ${relic.name} => [${sessionDrops}]`)
 	}
 
 	const toggleEditMode = () => {

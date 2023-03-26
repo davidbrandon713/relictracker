@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import ErrorBoundry from '../simple/error-boundry'
 import RelicPage from '../relicpage/relicpage'
 import Card from '../card/card'
@@ -8,17 +8,17 @@ import '../card/card.css'
 const CardList = (props) => {
 	const [selectedRelic, setSelectedRelic] = useState('None')
 	const [inventory, setInventory] = useState({
-		id: 'mesoN5',
+		id: 'neoK3',
 		data: [0, 0, 0, 0, 0, 0],
 	})
 	const [popupTrigger, setPopupTrigger] = useState(false)
-	const { userid, relics, serverIP } = props
+	const { userid, relics } = props
 
 	const setRelic = async (relic) => {
 		if (selectedRelic === relic) return setPopupTrigger(true)
 		// Retrieve user data for this relic
 		const onGetRelicInventory = async (relic) => {
-			await fetch(`http://${serverIP}:3001/users/${userid}/${relic.id}`, {
+			await fetch(`http://localhost:3001/users/${userid}/${relic.id}`, {
 				method: 'GET',
 			})
 				.then((response) => response.json())
@@ -31,18 +31,21 @@ const CardList = (props) => {
 	}
 
 	// Save session drops to user document
-	const saveInventory = async (relic, sessionDrops, bestStreak) => {
-		await fetch(`http://${serverIP}:3001/users/${userid}/update/${relic.id}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ sessionDrops, bestStreak }),
-		})
-			.then((response) => response.json())
-			.then((data) => setInventory(data))
-			.then(console.log(`Saved ${relic.name} data`))
-	}
+	const saveInventory = useCallback(
+		async (relic, sessionDrops, bestStreak) => {
+			await fetch(`http://localhost:3001/users/${userid}/update/${relic.id}`, {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ sessionDrops, bestStreak }),
+			})
+				.then((response) => response.json())
+				.then((data) => setInventory(data))
+				.then(console.log(`Saved ${relic.name} data`))
+		},
+		[userid]
+	)
 
 	return (
 		<>

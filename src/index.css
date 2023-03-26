@@ -11,6 +11,10 @@
   --font-color: #c7d1d6;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   min-height: 100%;
   background-color: var(--main-color);

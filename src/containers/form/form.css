@@ -2,12 +2,11 @@
   position: absolute;
   top: 86px;
   right: 0;
-  box-sizing: content-box;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
-  width: 280px;
+  width: 300px;
   padding: 6px 12px;
   justify-content: center;
   align-items: center;
