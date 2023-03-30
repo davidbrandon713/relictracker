@@ -18,7 +18,7 @@ const CardList = (props) => {
 		if (selectedRelic === relic) return setPopupTrigger(true)
 		// Retrieve user data for this relic
 		const onGetRelicInventory = async (relic) => {
-			await fetch(`http://localhost:3001/users/${userid}/${relic.id}`, {
+			await fetch(`http://localhost:8080/users/${userid}/${relic.id}`, {
 				method: 'GET',
 			})
 				.then((response) => response.json())
@@ -33,7 +33,7 @@ const CardList = (props) => {
 	// Save session drops to user document
 	const saveInventory = useCallback(
 		async (relic, sessionDrops, bestStreak) => {
-			await fetch(`http://localhost:3001/users/${userid}/update/${relic.id}`, {
+			await fetch(`http://localhost:8080/users/${userid}/update/${relic.id}`, {
 				method: 'PATCH',
 				headers: {
 					'Content-Type': 'application/json',

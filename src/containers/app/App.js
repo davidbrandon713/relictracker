@@ -21,7 +21,7 @@ const App = () => {
 
 	// Get all relic data
 	const onGetRelics = async () => {
-		await fetch(`http://localhost:3001/relics/all/${userid}`, {
+		await fetch(`http://localhost:8080/relics/all/${userid}`, {
 			method: 'GET',
 		})
 			.then((response) => response.json())
@@ -31,7 +31,7 @@ const App = () => {
 
 	// Create new relic and user data
 	const onCreateRelic = async (id, name, drops) => {
-		await fetch(`http://localhost3001/relics/create`, {
+		await fetch(`http://localhost:8080/relics/create`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -43,12 +43,9 @@ const App = () => {
 			.then((response) => response.json())
 			.then((data) => console.log(data))
 			.then(
-				await fetch(`http://localhost:3001/users/${userid}/createrelic`, {
+				await fetch(`http://localhost:8080/users/${userid}/createrelic/${id}`, {
 					method: 'PATCH',
 					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({
-						id,
-					}),
 				})
 					.then((response) => response.json())
 					.then((data) => console.log(data))
