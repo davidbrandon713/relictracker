@@ -5,9 +5,7 @@ const CalcContainerItem = (props) => {
   return (
     <div className='calcItem'>
       <p className='calcTitle'>{title}</p>
-      <div className='calcValueContainer'>
-        <p className='calcValue'>{value}</p>
-      </div>
+      <p className='calcValue'>{value}</p>
     </div>
   )
 }

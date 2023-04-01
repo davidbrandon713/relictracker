@@ -18,9 +18,11 @@ const RelicPage = (props) => {
 		newSession()
 	}, [relic])
 
+  const totalSessionDrops = sessionDrops.reduce((sum, num) => (sum += num))
+
 	const totalDropCount = inventory.data
 		? inventory.data.reduce((sum, num) => (sum += num)) +
-		  sessionDrops.reduce((sum, num) => (sum += num))
+		  totalSessionDrops
 		: 0
 
 	const eventLogger = (e, data) => {
@@ -211,20 +213,24 @@ const RelicPage = (props) => {
 
 						<div className="calcContainer">
 							<CalcContainerItem
-								title={'Total drops'}
+								title={'Total'}
 								value={totalDropCount}
 							/>
+              <CalcContainerItem 
+                title={'Session drops'}
+                value={totalSessionDrops}
+              />
 							<CalcContainerItem
-								title={'All time'}
+								title={'Best streak'}
 								value={inventory.best ? inventory.best : 0}
 							/>
 							<CalcContainerItem
-								title={'Session'}
+								title={'Session streak'}
 								// value={sessionStreak > streak ? sessionStreak : streak}
 								value={sessionStreak}
 							/>
 							<CalcContainerItem
-								title={'Current'}
+								title={'Streak'}
 								value={streak}
 							/>
 						</div>

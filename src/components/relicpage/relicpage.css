@@ -3,7 +3,7 @@
 .window {
 	position: fixed;
 	display: flex;
-	width: 380px;
+	width: 480px;
 	height: auto;
 	background-color: var(--main-color);
 	border: 1px solid var(--border-light);
@@ -29,12 +29,13 @@
 }
 
 .windowInner button {
-	font-size: 14px;
-	height: 24px;
+	font-size: 16px;
+	height: 30px;
 	width: auto;
 	color: var(--font-color);
 	background-color: var(--tertiary-color);
 	border: 1px solid var(--border-light);
+  padding-bottom: 2px;
 	border-radius: 3px;
 	transition: 20ms ease-in;
 }
@@ -70,7 +71,7 @@
 
 .windowInner .closeBtn {
 	position: absolute;
-	font-size: 14px;
+	font-size: 16px;
 	top: 10px;
 	right: 8px;
 }
@@ -96,7 +97,7 @@
 .topContainer p {
 	margin: auto 12px;
 	padding: 4px 0;
-	font-size: 20px;
+	font-size: 26px;
 	flex-grow: 1;
 	border: 1px solid var(--border-dark);
 	border-bottom: none;
@@ -108,8 +109,8 @@
 
 .topContainer button {
 	position: relative;
-	width: 26px;
-	height: 26px;
+	width: 30px;
+	height: 30px;
 	font-size: 18px;
 }
 
@@ -148,6 +149,7 @@
 
 .midContainer div h5 {
 	margin: 0;
+  font-size: 16px;
 }
 
 /*    Bottom Window    */
@@ -156,7 +158,7 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: none;
-	font-size: 12px;
+	font-size: 18px;
 	margin-bottom: 8px;
 	background-color: var(--tertiary-color);
 }
@@ -186,7 +188,7 @@
 
 .dropWindow span {
 	display: inline;
-	padding: 6px;
+	padding: 6px 8px;
 	text-align: right;
 }
 
@@ -218,7 +220,7 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: none;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	padding: 4px 0;
 	border: 1px solid var(--border-light);
 	background-color: var(--tertiary-color);
@@ -229,7 +231,7 @@
 	flex-direction: column;
 	flex-wrap: none;
 	justify-content: space-around;
-	width: 60px;
+	width: auto;
 }
 
 .calcTitle {
@@ -259,13 +261,13 @@
 	}
 
 	.windowInner button {
-		height: 16px;
-		font-size: 10px;
+		height: 20px;
+		font-size: 12px;
 	}
 
 	.windowInner .closeBtn {
-		font-size: 10px;
-		top: 6px;
+		font-size: 12px;
+		top: 5px;
 		right: 6px;
 	}
 
@@ -294,8 +296,11 @@
 
 	.midContainer {
 		margin-bottom: 6px;
-		font-size: 12px;
 	}
+
+  .midContainer div h5 {
+		font-size: 12px;
+  }
 
 	.botContainer {
 		font-size: 10px;
