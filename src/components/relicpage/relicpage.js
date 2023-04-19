@@ -58,6 +58,7 @@ const RelicPage = (props) => {
 	const saveSession = () => {
 		if (sessionDrops.every((item) => item === 0)) return
 		saveInventory(relic, sessionDrops, sessionStreak)
+    setEditMode(false)
 		newSession()
 	}
 
@@ -69,7 +70,6 @@ const RelicPage = (props) => {
 		}
 		if (window.confirm('Save session?')) {
 			saveSession()
-			setEditMode(false)
 			setTrigger(false)
 		}
 	}
