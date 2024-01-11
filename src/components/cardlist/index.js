@@ -51,18 +51,26 @@ const CardList = (props) => {
 		<>
 			<ErrorBoundry>
 				{relics.length ? (
-					<div className="cardlist-container">
-						{relics.map((relic) => {
-							return (
-								<Card
-									key={relic.name}
-									name={relic.name}
-									drops={relic.drops}
-									clickEvent={() => setRelic(relic)}
-								/>
-							)
-						})}
-					</div>
+					<>
+            <div
+              className="blurScreen"
+              style={{
+                display: popupTrigger ? 'flex' : 'none',
+              }}
+            />
+						<div className="cardlist-container">
+							{relics.map((relic) => {
+								return (
+									<Card
+										key={relic.name}
+										name={relic.name}
+										drops={relic.drops}
+										clickEvent={() => setRelic(relic)}
+									/>
+								)
+							})}
+						</div>
+					</>
 				) : (
 					<>
 						<h3 className="error">No relics match search criteria</h3>

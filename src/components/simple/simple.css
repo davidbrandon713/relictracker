@@ -48,7 +48,7 @@
   background-color: var(--main-color);
   border: 1px solid var(--border-dark);
   border-radius: 4px;
-  transition: all 50ms cubic-bezier(.21,.73,.72,.93);
+  transition: all 20ms cubic-bezier(.21,.73,.72,.93);
 }
 
 .searchbox:hover {
@@ -86,7 +86,7 @@
 #createRelic {
   width: auto;
   background-color: var(--secondary-color);
-  transition: all 50ms cubic-bezier(.21,.73,.72,.93);
+  transition: all 20ms cubic-bezier(.21,.73,.72,.93);
   transform: none;
 }
 
@@ -100,7 +100,7 @@
 }
 
 #createRelic .cardTitle {
-  transition: all 50ms cubic-bezier(.21,.73,.72,.93);
+  transition: all 20ms cubic-bezier(.21,.73,.72,.93);
 }
 
 @media all and (width < 768px) {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../../components/simple/header'
-import CardList from '../../components/cardlist/cardlist'
-import ErrorBoundry from '../../components/simple/error-boundry'
+import CardList from '../../components/cardlist'
 import Scroll from '../../components/simple/scroll'
 
 import '../../index.css'
@@ -72,12 +71,10 @@ const App = () => {
 				onCreateRelic={onCreateRelic}
 			/>
 			<Scroll>
-				<ErrorBoundry>
-					<CardList
-						userid={userid}
-						relics={filteredRelics}
-					/>
-				</ErrorBoundry>
+        <CardList
+          userid={userid}
+          relics={filteredRelics}
+        />
 			</Scroll>
 		</div>
 	)

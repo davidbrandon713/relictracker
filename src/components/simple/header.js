@@ -13,13 +13,13 @@ const Header = ({ onSearchChange, onCreateRelic }) => {
 				<SearchBox onSearchChange={onSearchChange} />
 			</div>
 			<div className="create-container">
-				<div
+				<button
 					className="card"
 					id="createRelic"
 					onClick={() => setPopupTrigger(!popupTrigger)}
 				>
 					<h1 className="cardTitle">Add Relic</h1>
-				</div>
+				</button>
 			</div>
 			{popupTrigger && (
 				<Form
