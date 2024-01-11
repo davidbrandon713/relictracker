@@ -30,6 +30,9 @@
     "workbox-webpack-plugin": "^6.5.4",
     "yup": "^1.0.2"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
