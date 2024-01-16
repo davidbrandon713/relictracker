@@ -9,6 +9,7 @@ const App = () => {
 	const userid = 'David'
 	const [searchfield, setSearchfield] = useState('')
 	const [relics, setRelics] = useState([])
+  const [iconSize, setIconSize] = useState('small')
 
 	useEffect(() => {
 		onGetRelics()
@@ -69,11 +70,14 @@ const App = () => {
 			<Header
 				onSearchChange={onSearchChange}
 				onCreateRelic={onCreateRelic}
+        iconSize={iconSize}
+        setIconSize={setIconSize}
 			/>
 			<Scroll>
         <CardList
           userid={userid}
           relics={filteredRelics}
+          iconSize={iconSize}
         />
 			</Scroll>
 		</div>

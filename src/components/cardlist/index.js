@@ -6,13 +6,13 @@ import Card from '../card/card'
 import '../card/card.css'
 
 const CardList = (props) => {
+	const { userid, relics, iconSize } = props
 	const [selectedRelic, setSelectedRelic] = useState('None')
 	const [inventory, setInventory] = useState({
 		id: 'neoK3',
 		data: [0, 0, 0, 0, 0, 0],
 	})
 	const [popupTrigger, setPopupTrigger] = useState(false)
-	const { userid, relics } = props
 
 	const setRelic = async (relic) => {
 		if (selectedRelic === relic) return setPopupTrigger(true)
@@ -66,6 +66,7 @@ const CardList = (props) => {
 										name={relic.name}
 										drops={relic.drops}
 										clickEvent={() => setRelic(relic)}
+                    iconSize={iconSize}
 									/>
 								)
 							})}

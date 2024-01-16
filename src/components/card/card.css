@@ -30,8 +30,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 8px;
-  width: 240px;
+  width: 100px;
+  padding: 4px;
   height: auto;
   cursor: pointer;
   border: 1px solid var(--border-dark);
@@ -52,17 +52,20 @@
   margin: 0;
   color: var(--font-dark);
   transition: 20ms cubic-bezier(.21,.73,.72,.93);
+  font-size: 16px;
 }
 
 .card:hover .cardTitle {
   color: var(--font-color);
 }
 
-.card img {
+.cardImage {
+  width: 80%;
   margin: 8px 0;
 }
 
 .dropListCard {
+  display: none;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -102,7 +105,7 @@
   background-color: rgb(170, 121, 72);
 }
 
-@media all and (max-width: 1024px) {
+/* @media all and (max-width: 1024px) {
   .cardlist-container {
     padding: 8px;
     gap: 8px;
@@ -123,26 +126,26 @@
     margin: 4px 0;
   }
 
-  .dropListCard p {
+  .dropListCard li {
     font-size: 10px;
   }
-}
+} */
 
-@media all and (max-width: 768px) {
-  .cardlist-container .card {
-    width: 90px;
-    padding: 4px;
+@media all and (min-width: 768px) {
+  .cardlist-container .card.large {
+    width: 240px;
+    padding: 8px;
   }
 
-  .cardTitle {
-    font-size: 12px;
+  .cardTitle.large {
+    font-size: 32px;
   }
 
-  .card img {
-    width: 80%;
+  .cardImage.large {
+    width: auto;
   }
 
-  .dropListCard {
-    display: none;
+  .dropListCard.large {
+    display: block;
   }
 }
