@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
-import RelicPageItem from '../relicpage-drop/relicpage-drop'
+import RelicPageItem from '../relicpage-item/relicpage-item'
 import CalcContainerItem from '../calc-container-item/calc-container-item'
 
 import './relicpage.css'
@@ -20,19 +20,18 @@ const RelicPage = (props) => {
 		setStreak(0)
 		setSessionStreak(0)
 		console.log(`Cleared session for ${relic.name} => [${sessionDrops}]`)
-    // WORTH LOOKING AT
-    // eslint-disable-next-line
+		// WORTH LOOKING AT
+		// eslint-disable-next-line
 	}, [relic])
 
 	useEffect(() => {
 		newSession()
 	}, [newSession])
 
-  const totalSessionDrops = sessionDrops.reduce((sum, num) => (sum += num))
+	const totalSessionDrops = sessionDrops.reduce((sum, num) => (sum += num))
 
 	const totalDropCount = inventory.data
-		? inventory.data.reduce((sum, num) => (sum += num)) +
-		  totalSessionDrops
+		? inventory.data.reduce((sum, num) => (sum += num)) + totalSessionDrops
 		: 0
 
 	const eventLogger = (e, data) => {
@@ -68,7 +67,7 @@ const RelicPage = (props) => {
 	const saveSession = () => {
 		if (sessionDrops.every((item) => item === 0)) return
 		saveInventory(relic, sessionDrops, sessionStreak)
-    setEditMode(false)
+		setEditMode(false)
 		newSession()
 	}
 
@@ -90,155 +89,155 @@ const RelicPage = (props) => {
 
 	return (
 		trigger && (
-      <Draggable
-        bounds="html"
-        handle=".dragBar"
-        defaultPosition={draggablePos}
-        onStop={eventLogger}
-      >
-        <div
-          className="window"
-          id="relicPageWindow"
-          style={{
-            top: window.innerHeight / 2 - 278,
-            right: window.innerWidth / 2 - 190,
-          }}
-        >
-          <div className="windowInner">
-            <div className="dragBar">
-              <h1 className="relicTitle">{relic.name} Relic</h1>
-            </div>
-            <button
-              className="closeBtn"
-              onClick={saveAndClose}
-            >
-              Close
-            </button>
+			<Draggable
+				bounds="html"
+				handle=".dragBar"
+				defaultPosition={draggablePos}
+				onStop={eventLogger}
+			>
+				<div
+					className="window"
+					id="relicPageWindow"
+					style={{
+						top: window.innerHeight / 2 - 278,
+						right: window.innerWidth / 2 - 190,
+					}}
+				>
+					<div className="windowInner">
+						<div className="dragBar">
+							<h1 className="relicTitle">{relic.name} Relic</h1>
+						</div>
+						<button
+							className="closeBtn"
+							onClick={saveAndClose}
+						>
+							Close
+						</button>
 
-            <div className="topContainer">
-              <RelicPageItem
-                relic={relic}
-                className="dropRare"
-                rmvDrop={rmvDrop}
-                addDrop={addDrop}
-                i={0}
-              />
-              <RelicPageItem
-                relic={relic}
-                className="dropUncommon"
-                rmvDrop={rmvDrop}
-                addDrop={addDrop}
-                i={1}
-              />
-              <RelicPageItem
-                relic={relic}
-                className="dropUncommon"
-                rmvDrop={rmvDrop}
-                addDrop={addDrop}
-                i={2}
-              />
-              <RelicPageItem
-                relic={relic}
-                className="dropCommon"
-                rmvDrop={rmvDrop}
-                addDrop={addDrop}
-                i={3}
-              />
-              <RelicPageItem
-                relic={relic}
-                className="dropCommon"
-                rmvDrop={rmvDrop}
-                addDrop={addDrop}
-                i={4}
-              />
-              <RelicPageItem
-                relic={relic}
-                className="dropCommon"
-                rmvDrop={rmvDrop}
-                addDrop={addDrop}
-                i={5}
-              />
-            </div>
+						<div className="topContainer">
+							<RelicPageItem
+								relic={relic}
+								className="dropRare"
+								rmvDrop={rmvDrop}
+								addDrop={addDrop}
+								i={0}
+							/>
+							<RelicPageItem
+								relic={relic}
+								className="dropUncommon"
+								rmvDrop={rmvDrop}
+								addDrop={addDrop}
+								i={1}
+							/>
+							<RelicPageItem
+								relic={relic}
+								className="dropUncommon"
+								rmvDrop={rmvDrop}
+								addDrop={addDrop}
+								i={2}
+							/>
+							<RelicPageItem
+								relic={relic}
+								className="dropCommon"
+								rmvDrop={rmvDrop}
+								addDrop={addDrop}
+								i={3}
+							/>
+							<RelicPageItem
+								relic={relic}
+								className="dropCommon"
+								rmvDrop={rmvDrop}
+								addDrop={addDrop}
+								i={4}
+							/>
+							<RelicPageItem
+								relic={relic}
+								className="dropCommon"
+								rmvDrop={rmvDrop}
+								addDrop={addDrop}
+								i={5}
+							/>
+						</div>
 
-            <div className="midContainer">
-              <div>
-                <button onClick={saveSession}>Save</button>
-                <button
-                  onClick={toggleEditMode}
-                  style={{
-                    border: editMode && '1px solid red',
-                    color: editMode && 'red',
-                  }}
-                >
-                  Edit
-                </button>
-                <button onClick={newSession}>Revert</button>
-              </div>
-              <div>
-                <h5>Session</h5>
-                <h5>Total</h5>
-                <h5>Percent</h5>
-              </div>
-            </div>
+						<div className="midContainer">
+							<div>
+								<button onClick={saveSession}>Save</button>
+								<button
+									onClick={toggleEditMode}
+									style={{
+										border: editMode && '1px solid red',
+										color: editMode && 'red',
+									}}
+								>
+									Edit
+								</button>
+								<button onClick={newSession}>Revert</button>
+							</div>
+							<div>
+								<h5>Session</h5>
+								<h5>Total</h5>
+								<h5>Percent</h5>
+							</div>
+						</div>
 
-            <div className="botContainer">
-              <div className="dropWindow">
-                {relic.drops &&
-                  relic.drops.map((drop, index) => (
-                    <span key={`${drop}-${index}-drop`}>{drop}</span>
-                  ))}
-              </div>
-              <div className="dataWindow">
-                <div>
-                  {sessionDrops.map((data, index) => (
-                    <span key={`${inventory.id}-${index}-session`}>{data}</span>
-                  ))}
-                </div>
-                <div>
-                  {inventory.data &&
-                    inventory.data.map((item, index) => (
-                      <span key={`${inventory.id}-${index}-total`}>
-                        {item + sessionDrops[index]}
-                      </span>
-                    ))}
-                </div>
-                <div>
-                  {inventory.data &&
-                    inventory.data.map((item, index) => (
-                      <span key={`${inventory.id}-${index}-percent`}>
-                        {calcPercent(item + sessionDrops[index])}%
-                      </span>
-                    ))}
-                </div>
-              </div>
-            </div>
+						<div className="botContainer">
+							<div className="dropWindow">
+								{relic.drops &&
+									relic.drops.map((drop, index) => (
+										<span key={`${drop}-${index}-drop`}>{drop}</span>
+									))}
+							</div>
+							<div className="dataWindow">
+								<div>
+									{sessionDrops.map((data, index) => (
+										<span key={`${inventory.id}-${index}-session`}>{data}</span>
+									))}
+								</div>
+								<div>
+									{inventory.data &&
+										inventory.data.map((item, index) => (
+											<span key={`${inventory.id}-${index}-total`}>
+												{item + sessionDrops[index]}
+											</span>
+										))}
+								</div>
+								<div>
+									{inventory.data &&
+										inventory.data.map((item, index) => (
+											<span key={`${inventory.id}-${index}-percent`}>
+												{calcPercent(item + sessionDrops[index])}%
+											</span>
+										))}
+								</div>
+							</div>
+						</div>
 
-            <div className="calcContainer">
-              <CalcContainerItem
-                title={'Total'}
-                value={totalDropCount}
-              />
-              <CalcContainerItem 
-                title={'Session drops'}
-                value={totalSessionDrops}
-              />
-              <CalcContainerItem
-                title={'Best streak'}
-                value={inventory.best ? inventory.best : 0}
-              />
-              <CalcContainerItem
-                title={'Session streak'}
-                // value={sessionStreak > streak ? sessionStreak : streak}
-                value={sessionStreak}
-              />
-              <CalcContainerItem
-                title={'Streak'}
-                value={streak}
-              />
-            </div>
-          </div>
-        </div>
-      </Draggable>
+						<div className="calcContainer">
+							<CalcContainerItem
+								title={'Total'}
+								value={totalDropCount}
+							/>
+							<CalcContainerItem
+								title={'Session drops'}
+								value={totalSessionDrops}
+							/>
+							<CalcContainerItem
+								title={'Best streak'}
+								value={inventory.best ? inventory.best : 0}
+							/>
+							<CalcContainerItem
+								title={'Session streak'}
+								// value={sessionStreak > streak ? sessionStreak : streak}
+								value={sessionStreak}
+							/>
+							<CalcContainerItem
+								title={'Streak'}
+								value={streak}
+							/>
+						</div>
+					</div>
+				</div>
+			</Draggable>
 		)
 	)
 }
