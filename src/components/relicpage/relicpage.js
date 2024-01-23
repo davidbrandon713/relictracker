@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 import RelicPageItem from '../relicpage-item/relicpage-item'
 import CalcContainerItem from '../calc-container-item/calc-container-item'
@@ -14,19 +14,10 @@ const RelicPage = (props) => {
   const [sessionStreak, setSessionStreak] = useState(0)
   const [draggablePos, setDraggablePos] = useState()
 
-  const newSession = useCallback(() => {
-    if (sessionDrops.every((item) => item === 0)) return
-    setSessionDrops(initialState)
-    setStreak(0)
-    setSessionStreak(0)
-    console.log(`Cleared session for ${relic.name} => [${sessionDrops}]`)
-    // WORTH LOOKING AT
-    // eslint-disable-next-line
-  }, [relic])
-
   useEffect(() => {
     newSession()
-  }, [newSession])
+    // eslint-disable-next-line
+  }, [relic])
 
   const totalSessionDrops = sessionDrops.reduce((sum, num) => (sum += num))
 
@@ -62,6 +53,14 @@ const RelicPage = (props) => {
     setSessionDrops(updatedDrops)
     if (editMode || i !== 0) return
     setStreak((prevStreak) => prevStreak - 1)
+  }
+
+  const newSession = () => {
+    if (sessionDrops.every((item) => item === 0)) return
+    setSessionDrops(initialState)
+    setStreak(0)
+    setSessionStreak(0)
+    console.log(`Cleared session for ${relic.name} => [${sessionDrops}]`)
   }
 
   const saveSession = () => {
