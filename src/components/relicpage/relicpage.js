@@ -56,7 +56,7 @@ const RelicPage = (props) => {
   }
 
   const newSession = () => {
-    if (sessionDrops.every((item) => item === 0)) return
+    // if (sessionDrops.every((item) => item === 0)) return
     setSessionDrops(initialState)
     setStreak(0)
     setSessionStreak(0)
