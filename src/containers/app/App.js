@@ -6,7 +6,7 @@ import Scroll from '../../components/simple/scroll'
 import '../../index.css'
 
 const App = () => {
-  const userid = 'David'
+  const userid = 'Default'
   const [searchfield, setSearchfield] = useState('')
   const [relics, setRelics] = useState([])
   const [iconSize, setIconSize] = useState('small')
